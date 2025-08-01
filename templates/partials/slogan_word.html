@@ -1,0 +1,19 @@
+<p
+    style="--chars: 55;"
+    class="typewriter  text-xl font-semibold mt-4"
+  >
+    IoT Engineer || Full stack Developer || DevOps Engineer
+</p>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const el = document.querySelector('.typewriter');
+    el.addEventListener('animationend', (e) => {
+      if (e.animationName === 'typing') {
+        el.classList.remove('typewriter');
+        el.classList.add('typewriter-done');
+      }
+    });
+  });
+</script>
+

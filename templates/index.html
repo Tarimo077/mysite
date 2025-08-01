@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <!-- Hero Section -->
+      <div id="home" class="w-full bg-base-300 flex flex-wrap items-center justify-between rounded-none">
+        <div class="card-body max-w-xl p-6">
+          <div class="flex flex-col sm:flex-row items-center">
+            <figure class="w-full sm:w-1/2 mb-4 sm:mb-0">
+              <img src="{% static 'images/myLogoCropped.jpg' %}" alt="Logo" class="rounded-lg" />
+            </figure>
+            <h1 class="text-4xl font-bold text-center sm:text-left sm:ml-6">JEFF<br>TARIMO</h1>
+          </div>
+          {% include 'partials/slogan_word.html' %}
+        </div>
+        <figure class="hidden sm:block w-full sm:w-1/2 p-4">
+          <img src="{% static 'images/myPhoto_no_bg.png' %}" alt="Photo" class="w-full object-cover rounded-none" />
+        </figure>
+      </div>
+
+      <!-- Experience -->
+      <div id="experience" class="w-full bg-cover bg-center bg-base-100">
+        <h1 class="text-center text-3xl mb-2 p-4 font-bold">EXPERIENCE</h1>
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical fill-green-500">
+          <!-- Item 2 -->
+            <li>
+              <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" class="h-5 w-5">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
+                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
+                </svg>
+              </div>
+              <div class="timeline-end mb-8 md:text-end">
+                <time class="font-mono italic ">Feb 2025 - Present</time>
+                <div class="text-lg font-black mt-2 ">HEAD OF Technology - Powerpay Africa</div>
+                <p class=" font-semibold">
+                  • Led infrastructure growth and strategic IT planning.<br>
+                  • Managed hardware and software teams to reach company goals.<br>
+                  • Project management and planning.<br>
+                  • Orchestrated company technology solutions and made decisions on tech stack.<br>
+                </p>
+              </div>
+              <hr class="" />
+            </li>
+          <!-- Item 2 -->
+            <li>
+              <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" class="h-5 w-5">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
+                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
+                </svg>
+              </div>
+              <div class="timeline-start mb-8 md:text-end">
+                <time class="font-mono italic ">Feb 2023 - Jan 2025</time>
+                <div class="text-lg font-black mt-2 ">HEAD OF IoT - Powerpay Africa</div>
+                <p class=" font-semibold">
+                  • Pioneered advanced IoT firmware development using C++ and MicroPython.<br>
+                  • Mastered deployment of diverse communication protocols: Wi-Fi, BLE, GPRS, MODBUS (RS485).<br>
+                  • Directed backend architecture with NodeJS, Django, and Python.<br>
+                  • Built frontend interfaces with HTML and Flutter.<br>
+                  • Managed servers on Ubuntu with Azure and AWS.<br>
+                  • Automated workflows using Node-RED.<br>
+                  • Integrated powerful APIs for scalability.<br>
+                  • Resolved hardware issues.<br>
+                  • Delivered smart metering solutions.<br>
+                </p>
+              </div>
+              <hr class="" />
+            </li>
+
+            <!-- Item 3 -->
+            <li>
+              <hr class="" />
+              <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" class="h-5 w-5 ">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
+                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
+                </svg>
+              </div>
+              <div class="timeline-end mb-8 md:mb-8">
+                <time class="font-mono italic ">Sep 2022 - Jan 2023</time>
+                <div class="text-lg font-black ">HEAD OF IoT - Upande Limited</div>
+                <p class="font-semibold ">
+                  • Led IoT projects as Product Owner.<br>
+                  • Engineered workflows using Node-red.<br>
+                  • Held similar duties as prior IoT Engineer role.<br>
+                </p>
+              </div>
+              <hr class="" />
+            </li>
+
+            <!-- Item 4 -->
+            <li>
+              <hr />
+              <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" class="h-5 w-5 ">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
+                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
+                </svg>
+              </div>
+              <div class="timeline-start mb-8 md:text-end">
+                <time class="font-mono italic ">Apr 2021 - Aug 2022</time>
+                <div class="text-lg font-black  mb-2">IoT ENGINEER - Upande Limited</div>
+                <p class="font-semibold ">
+                  • Monitored IoT systems and resolved issues.<br>
+                  • Recommended hardware/software upgrades.<br>
+                  • Delivered stakeholder updates and reports.<br>
+                  • Assessed technologies and collaborated on components.<br>
+                  • Designed distributed systems and defined requirements.<br>
+                  • Conducted testing and maintained documentation.<br>
+                  • Managed inventory and improved system performance.<br>
+                </p>
+              </div>
+            </li>
+        </ul>
+      </div>
+
+      <!-- Skills -->
+      <div id="proficiencies" class="w-full py-10 bg-base-300 px-6 rounded-lg shadow-lg">
+        <h1 class="text-center  text-3xl font-bold mb-8">PROFICIENCIES</h1>
+        <div class="flex flex-col gap-y-6 max-w-md mx-auto">
+          {% for skill in skills %}
+          <div>
+            <h2 class=" font-bold mb-1">{{ skill.0 }}</h2>
+            <progress class="progress progress-success w-full h-4" value="{{ skill.1 }}" max="100"></progress>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Portfolio -->
+       <div id="portfolio"><h1 class="text-center  text-3xl font-bold mt-8 mb-8">PORTFOLIO</h1></div>
+      <div class="grid gap-4 mb-16 bg-base-100 h-full
+            grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+            justify-items-center">
+        {% for p in portfolio %}
+          <div class="card bg-base-300 w-96 shadow-lg">
+            <figure class="relative h-64 w-full overflow-hidden">
+              <div class="carousel w-full h-full">
+                {% for img in p.3 %}
+                  <div class="carousel-item w-full h-full {% if not forloop.first %}hidden{% endif %}">
+                    <img src="{% static 'images/' %}{{ img }}" class="w-full h-full object-cover rounded-t-lg" alt="Image {{ forloop.counter }}">
+                  </div>
+                {% endfor %}
+              </div>
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">
+                {{ p.0 }}
+              </h2>
+              <p>{{ p.1 }}</p>
+              <div class="card-actions justify-start flex flex-wrap gap-2 mt-8">
+                {% for tech in p.2 %}
+                  <div class="badge badge-dash badge-info">{{ tech }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+<script>
+  const carousels = document.querySelectorAll('.carousel');
+
+  carousels.forEach(carousel => {
+    const slides = carousel.querySelectorAll('.carousel-item');
+    let index = 0;
+
+    // Hide all slides except the first
+    slides.forEach((slide, i) => {
+      if (i !== 0) slide.classList.add('hidden');
+    });
+
+    setInterval(() => {
+      slides[index].classList.add('hidden'); // hide current
+      index = (index + 1) % slides.length;   // move to next
+      slides[index].classList.remove('hidden'); // show next
+    }, 5000);
+  });
+</script>
+
+{% endblock %}
