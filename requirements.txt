@@ -5,7 +5,7 @@ autobahn==24.4.2
 Automat==25.4.16
 binaryornot==0.4.4
 certifi==2025.7.14
-cffi==1.17.1
+cffi==2.0.0
 chardet==5.2.0
 charset-normalizer==3.4.2
 click==8.2.1

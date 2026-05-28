@@ -2,189 +2,161 @@
 {% load static %}
 
 {% block content %}
-      <!-- Hero Section -->
-      <div id="home" class="w-full bg-base-300 flex flex-wrap items-center justify-between rounded-none">
-        <div class="card-body max-w-xl p-6">
-          <div class="flex flex-col sm:flex-row items-center">
-            <figure class="w-full sm:w-1/2 mb-4 sm:mb-0">
-              <img src="{% static 'images/myLogoCropped.jpg' %}" alt="Logo" class="rounded-lg" />
-            </figure>
-            <h1 class="text-4xl font-bold text-center sm:text-left sm:ml-6">JEFF<br>TARIMO</h1>
-          </div>
-          {% include 'partials/slogan_word.html' %}
+<section id="home" class="hero-section section-pad">
+  <div class="hero-orb hero-orb--one"></div>
+  <div class="hero-orb hero-orb--two"></div>
+
+  <div class="hero-grid content-wrap">
+    <div class="hero-copy reveal-up">
+      <span class="eyebrow"><i class="fa-solid fa-satellite-dish"></i> IoT systems • cloud platforms • modern web products</span>
+      <h1>Engineering connected products that scale from device to dashboard.</h1>
+      {% include 'partials/slogan_word.html' %}
+      <p class="hero-lede">I build reliable IoT infrastructure, full-stack Django applications, analytics dashboards, and DevOps pipelines for teams that need practical technology leadership.</p>
+
+      <div class="hero-actions">
+        <a href="#portfolio" class="primary-cta">View portfolio <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="mailto:tarimojeff@gmail.com" class="secondary-cta">Start a project</a>
+      </div>
+
+      <div class="hero-stats" aria-label="Professional highlights">
+        <div>
+          <strong>4+</strong>
+          <span>Years in IoT</span>
         </div>
-        <figure class="hidden sm:block w-full sm:w-1/2 p-4">
-          <img src="{% static 'images/myPhoto_no_bg.png' %}" alt="Photo" class="w-full object-cover rounded-none" />
-        </figure>
+        <div>
+          <strong>90%</strong>
+          <span>Django focus</span>
+        </div>
+        <div>
+          <strong>3</strong>
+          <span>Featured builds</span>
+        </div>
       </div>
+    </div>
 
-      <!-- Experience -->
-      <div id="experience" class="w-full bg-cover bg-center bg-base-100 mt-2">
-        <h1 class="text-center text-3xl mb-2 p-4 font-bold">EXPERIENCE</h1>
-        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical fill-green-500">
-          <!-- Item 1 -->
-            <li>
-              <div class="timeline-middle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" class="h-5 w-5">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
-                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
-                </svg>
-              </div>
-              <div class="timeline-end mb-8">
-                <time class="font-mono italic ">Feb 2025 - Present</time>
-                <div class="text-lg font-black">HEAD OF TECHNOLOGY - Powerpay Africa</div>
-                <p class=" font-semibold">
-                  • Led infrastructure growth and strategic IT planning.<br>
-                  • Managed hardware and software teams to reach company goals.<br>
-                  • Project management and planning.<br>
-                  • Orchestrated company technology solutions and made decisions on tech stack.<br>
-                </p>
-              </div>
-              <hr class="" />
-            </li>
-          <!-- Item 2 -->
-            <li>
-              <div class="timeline-middle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" class="h-5 w-5">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
-                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
-                </svg>
-              </div>
-              <div class="timeline-start mb-8 md:text-end">
-                <time class="font-mono italic ">Feb 2023 - Jan 2025</time>
-                <div class="text-lg font-black mt-2 ">HEAD OF IoT - Powerpay Africa</div>
-                <p class=" font-semibold">
-                  • Pioneered advanced IoT firmware development using C++ and MicroPython.<br>
-                  • Mastered deployment of diverse communication protocols: Wi-Fi, BLE, GPRS, MODBUS (RS485).<br>
-                  • Directed backend architecture with NodeJS, Django, and Python.<br>
-                  • Built frontend interfaces with HTML and Flutter.<br>
-                  • Managed servers on Ubuntu with Azure and AWS.<br>
-                  • Automated workflows using Node-RED.<br>
-                  • Integrated powerful APIs for scalability.<br>
-                  • Resolved hardware issues.<br>
-                  • Delivered smart metering solutions.<br>
-                </p>
-              </div>
-              <hr class="" />
-            </li>
-
-            <!-- Item 3 -->
-            <li>
-              <hr class="" />
-              <div class="timeline-middle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" class="h-5 w-5 ">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
-                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
-                </svg>
-              </div>
-              <div class="timeline-end mb-8 md:mb-8">
-                <time class="font-mono italic ">Sep 2022 - Jan 2023</time>
-                <div class="text-lg font-black ">HEAD OF IoT - Upande Limited</div>
-                <p class="font-semibold ">
-                  • Led IoT projects as Product Owner.<br>
-                  • Engineered workflows using Node-red.<br>
-                  • Held similar duties as prior IoT Engineer role.<br>
-                </p>
-              </div>
-              <hr class="" />
-            </li>
-
-            <!-- Item 4 -->
-            <li>
-              <hr />
-              <div class="timeline-middle">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                  fill="currentColor" class="h-5 w-5 ">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 
-                    4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" />
-                </svg>
-              </div>
-              <div class="timeline-start mb-8 md:text-end">
-                <time class="font-mono italic ">Apr 2021 - Aug 2022</time>
-                <div class="text-lg font-black  mb-2">IoT ENGINEER - Upande Limited</div>
-                <p class="font-semibold ">
-                  • Monitored IoT systems and resolved issues.<br>
-                  • Recommended hardware/software upgrades.<br>
-                  • Delivered stakeholder updates and reports.<br>
-                  • Assessed technologies and collaborated on components.<br>
-                  • Designed distributed systems and defined requirements.<br>
-                  • Conducted testing and maintained documentation.<br>
-                  • Managed inventory and improved system performance.<br>
-                </p>
-              </div>
-            </li>
-        </ul>
+    <div class="hero-visual reveal-up">
+      <div class="profile-card">
+        <div class="profile-glow"></div>
+        <img src="{% static 'images/myPhoto_no_bg.png' %}" alt="Jeff Tarimo" class="profile-photo" />
+        <div class="profile-badge profile-badge--top"><i class="fa-solid fa-microchip"></i> IoT</div>
+        <div class="profile-badge profile-badge--bottom"><i class="fa-solid fa-cloud"></i> Cloud + DevOps</div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Skills -->
-      <div id="proficiencies" class="w-full py-10 bg-base-300 px-6 rounded-lg shadow-lg">
-        <h1 class="text-center  text-3xl font-bold mb-8">PROFICIENCIES</h1>
-        <div class="flex flex-col gap-y-6 max-w-md mx-auto">
-          {% for skill in skills %}
-          <div>
-            <h2 class=" font-bold mb-1">{{ skill.0 }}</h2>
-            <progress class="progress progress-success w-full h-4" value="{{ skill.1 }}" max="100"></progress>
-          </div>
+<section id="experience" class="experience-section section-pad">
+  <div class="content-wrap">
+    <div class="section-heading reveal-up">
+      <span class="eyebrow">Career journey</span>
+      <h2>Experience with hands-on engineering and technical leadership.</h2>
+      <p>From embedded systems and wireless protocols to backend architecture and cloud operations.</p>
+    </div>
+
+    <div class="timeline-modern">
+      <article class="timeline-card reveal-up">
+        <div class="timeline-date">Feb 2025 — Present</div>
+        <div class="timeline-content">
+          <h3>Head of Technology <span>Powerpay Africa</span></h3>
+          <ul>
+            <li>Led infrastructure growth, strategic IT planning, and technology direction.</li>
+            <li>Managed hardware and software teams toward product and business goals.</li>
+            <li>Owned project planning, technical decisions, and scalable solution architecture.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-card reveal-up">
+        <div class="timeline-date">Feb 2023 — Jan 2025</div>
+        <div class="timeline-content">
+          <h3>Head of IoT <span>Powerpay Africa</span></h3>
+          <ul>
+            <li>Built IoT firmware with C++, MicroPython, Wi-Fi, BLE, GPRS, and MODBUS.</li>
+            <li>Directed backend systems using NodeJS, Django, Python, APIs, and Node-RED.</li>
+            <li>Managed Ubuntu servers on Azure and AWS for smart metering deployments.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-card reveal-up">
+        <div class="timeline-date">Sep 2022 — Jan 2023</div>
+        <div class="timeline-content">
+          <h3>Head of IoT <span>Upande Limited</span></h3>
+          <ul>
+            <li>Led IoT projects as product owner and coordinated technical delivery.</li>
+            <li>Engineered automated workflows and supported device-to-cloud systems.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-card reveal-up">
+        <div class="timeline-date">Apr 2021 — Aug 2022</div>
+        <div class="timeline-content">
+          <h3>IoT Engineer <span>Upande Limited</span></h3>
+          <ul>
+            <li>Monitored IoT systems, resolved issues, and improved system performance.</li>
+            <li>Designed distributed systems, documented requirements, and managed inventory.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proficiencies" class="skills-section section-pad">
+  <div class="content-wrap">
+    <div class="section-heading reveal-up">
+      <span class="eyebrow">Core capabilities</span>
+      <h2>Technical strengths across hardware, software, and infrastructure.</h2>
+      <p>A practical stack for building products that communicate reliably, process data, and stay maintainable.</p>
+    </div>
+
+    <div class="skills-grid">
+      {% for skill in skills %}
+      <article class="skill-card reveal-up" style="--skill-level: {{ skill.1 }}%;">
+        <div class="skill-card__top">
+          <h3>{{ skill.0 }}</h3>
+          <strong>{{ skill.1 }}%</strong>
+        </div>
+        <div class="skill-meter" aria-hidden="true"><span></span></div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio-section section-pad">
+  <div class="content-wrap">
+    <div class="section-heading reveal-up">
+      <span class="eyebrow">Selected work</span>
+      <h2>Portfolio projects with product thinking and full-stack execution.</h2>
+      <p>Each build combines clean interfaces, reliable architecture, and the right tools for the job.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      {% for p in portfolio %}
+      <article class="portfolio-card reveal-up">
+        <div class="portfolio-media" data-carousel>
+          {% for img in p.3 %}
+          <img src="{% static 'images/' %}{{ img }}" class="portfolio-slide {% if forloop.first %}is-active{% endif %}" alt="{{ p.0 }} screenshot {{ forloop.counter }}">
           {% endfor %}
+          <div class="portfolio-overlay"></div>
         </div>
-      </div>
-
-      <!-- Portfolio -->
-       <div id="portfolio"><h1 class="text-center  text-3xl font-bold mt-8 mb-8">PORTFOLIO</h1></div>
-      <div class="grid gap-4 mb-16 bg-base-100 h-full
-            grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-            justify-items-center">
-        {% for p in portfolio %}
-          <div class="card bg-base-300 w-96 shadow-lg sm:m-2">
-            <figure class="relative h-64 w-full overflow-hidden">
-              <div class="carousel w-full h-full">
-                {% for img in p.3 %}
-                  <div class="carousel-item w-full h-full {% if not forloop.first %}hidden{% endif %}">
-                    <img src="{% static 'images/' %}{{ img }}" class="w-full h-full object-cover rounded-t-lg" alt="Image {{ forloop.counter }}">
-                  </div>
-                {% endfor %}
-              </div>
-            </figure>
-            <div class="card-body">
-              <h2 class="card-title">
-                {{ p.0 }}
-              </h2>
-              <p>{{ p.1 }}</p>
-              <div class="card-actions justify-start flex flex-wrap gap-2 mt-8">
-                {% for tech in p.2 %}
-                  <div class="badge badge-dash badge-info">{{ tech }}</div>
-                {% endfor %}
-              </div>
-            </div>
+        <div class="portfolio-body">
+          <div class="portfolio-title-row">
+            <h3>{{ p.0 }}</h3>
+            <span><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </div>
-        {% endfor %}
-      </div>
-
-<script>
-  const carousels = document.querySelectorAll('.carousel');
-
-  carousels.forEach(carousel => {
-    const slides = carousel.querySelectorAll('.carousel-item');
-    let index = 0;
-
-    // Hide all slides except the first
-    slides.forEach((slide, i) => {
-      if (i !== 0) slide.classList.add('hidden');
-    });
-
-    setInterval(() => {
-      slides[index].classList.add('hidden'); // hide current
-      index = (index + 1) % slides.length;   // move to next
-      slides[index].classList.remove('hidden'); // show next
-    }, 5000);
-  });
-</script>
-
+          <p>{{ p.1 }}</p>
+          <div class="tech-stack">
+            {% for tech in p.2 %}
+            <span>{{ tech }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock %}
