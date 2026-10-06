@@ -1,0 +1,21 @@
+{% if success %}
+  <div class="contact-alert contact-alert--success">
+    <div class="contact-alert__icon">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div class="contact-alert__body">
+      <strong>Message Sent Successfully!</strong>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+{% else %}
+  <div class="contact-alert contact-alert--error">
+    <div class="contact-alert__icon">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+    </div>
+    <div class="contact-alert__body">
+      <strong>Submission Incomplete</strong>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+{% endif %}

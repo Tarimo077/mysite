@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resume | Jeff Tarimo — Head of Technology & IoT Systems Engineer{% endblock %}
+
+{% block content %}
+<div class="resume-page-wrapper section-pad">
+  <div class="content-wrap">
+    <!-- Top Actions Toolbar -->
+    <div class="resume-toolbar reveal-up">
+      <a href="{% url 'home' %}" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <div class="toolbar-actions">
+        <button type="button" class="btn-tool" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print Resume
+        </button>
+        <a href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download="Jeff_Tarimo_Resume.pdf" class="btn-tool btn-tool--primary">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Printable Resume Document Canvas -->
+    <div class="resume-canvas-sheet reveal-up" id="resume-document">
+      <!-- Resume Header -->
+      <header class="res-header">
+        <div class="res-header-left">
+          <h1 class="res-name">JEFF TARIMO</h1>
+          <div class="res-title">Head of Technology • IoT Systems Engineer • Full-Stack Cloud</div>
+        </div>
+        <div class="res-header-right">
+          <div><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya &bull; <a href="tel:+254790024489">+254 790 024 489</a></div>
+          <div><i class="fa-solid fa-envelope"></i> <a href="mailto:tarimojeff@gmail.com">tarimojeff@gmail.com</a> &bull; <a href="https://jefftarimo.co.ke" target="_blank">jefftarimo.co.ke</a></div>
+          <div><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/jeff-tarimo-043515151" target="_blank">linkedin.com/in/jeff-tarimo</a> &bull; <a href="https://github.com/Tarimo077" target="_blank"><i class="fa-brands fa-github"></i> github.com/Tarimo077</a></div>
+        </div>
+      </header>
+
+      <div class="res-divider"></div>
+
+      <!-- Professional Summary -->
+      <section class="res-section">
+        <h2 class="res-heading"><span class="res-bullet">&#9632;</span> Professional Summary</h2>
+        <p class="res-summary">
+          Multidisciplinary <strong>Head of Technology &amp; IoT Systems Engineer</strong> with over 4 years of proven expertise designing, bench-testing, and deploying industrial-grade edge-to-cloud architectures. Specialized in technical leadership, microcontrollers (STM32, ESP32), low-power wireless networks (LoRaWAN, Cellular, BLE), and scalable backend pipelines (Python, Django, Node.js, AWS/Azure). Experienced in directing cross-functional engineering teams, architecting smart energy metering platforms, and delivering fault-tolerant telemetry infrastructure.
+        </p>
+      </section>
+
+      <!-- Technical Expertise -->
+      <section class="res-section">
+        <h2 class="res-heading"><span class="res-bullet">&#9632;</span> Technical Expertise</h2>
+        <div class="res-skills-grid">
+          <div class="res-skill-cell">
+            <strong>Microcontrollers & Hardware:</strong> STM32, ESP32, Raspberry Pi, Arduino, Circuit Design, Sensor Integration
+          </div>
+          <div class="res-skill-cell">
+            <strong>Firmware & Protocols:</strong> C/C++, MicroPython, MODBUS (RS485), MQTT, HTTP/S, UART, SPI, I2C
+          </div>
+          <div class="res-skill-cell">
+            <strong>Wireless & Networking:</strong> LoRaWAN, Cellular (GPRS/LTE-M), Sigfox, BLE, Wi-Fi, CCNA R&S
+          </div>
+          <div class="res-skill-cell">
+            <strong>Backend & Cloud:</strong> Node.js, Python (Django), Next.js, Redis, AWS, Azure, Linux (Ubuntu), REST APIs
+          </div>
+          <div class="res-skill-cell">
+            <strong>Databases & Time-Series:</strong> ClickHouse, PostgreSQL, MySQL, InfluxDB (Time-series optimization)
+          </div>
+          <div class="res-skill-cell">
+            <strong>Frontend & Leadership:</strong> React, Flutter, Tailwind CSS, HTML5, Node-RED Automation, Technical Strategy
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="res-section">
+        <h2 class="res-heading"><span class="res-bullet">&#9632;</span> Work Experience</h2>
+
+        <!-- Role 1: Head of Technology -->
+        <div class="res-job">
+          <div class="res-job-top">
+            <span class="res-job-title">Head of Technology</span> &mdash; <span class="res-job-company">Powerpay Africa Limited</span>
+            <span class="res-job-date">Feb 2025 – Present | Nairobi, Kenya</span>
+          </div>
+          <ul class="res-bullets">
+            <li>Direct overall technology vision, infrastructure scaling, strategic IT planning, and architectural roadmaps across hardware & software.</li>
+            <li>Lead engineering teams across firmware, cloud backend, and mobile apps to deliver smart energy metering and financing systems.</li>
+            <li>Orchestrate tech stack decisions, cloud operations (AWS/Azure/Ubuntu), and technical delivery to align with company growth goals.</li>
+          </ul>
+        </div>
+
+        <!-- Role 2: Head of IoT -->
+        <div class="res-job">
+          <div class="res-job-top">
+            <span class="res-job-title">Head of IoT</span> &mdash; <span class="res-job-company">Powerpay Africa Limited</span>
+            <span class="res-job-date">Feb 2023 – Jan 2025 | Nairobi, Kenya</span>
+          </div>
+          <ul class="res-bullets">
+            <li>Spearheaded firmware engineering using C++ and MicroPython for smart energy meters and edge telemetry controllers.</li>
+            <li>Deployed multi-protocol communication pipelines (MODBUS RS485, GPRS, Wi-Fi, BLE) for continuous remote asset monitoring.</li>
+            <li>Architected scalable backend services and REST APIs with Node.js, Django, ClickHouse, and PostgreSQL on Ubuntu cloud servers.</li>
+            <li>Automated data normalization and exception alerts via custom Node-RED workflows, eliminating manual intervention.</li>
+          </ul>
+        </div>
+
+        <!-- Role 3: Head of IoT - Upande -->
+        <div class="res-job">
+          <div class="res-job-top">
+            <span class="res-job-title">Head of IoT</span> &mdash; <span class="res-job-company">Upande Limited</span>
+            <span class="res-job-date">Sep 2022 – Jan 2023 | Nairobi, Kenya</span>
+          </div>
+          <ul class="res-bullets">
+            <li>Directed product strategy and hardware delivery roadmaps as Product Owner across municipal and agricultural remote sensing initiatives.</li>
+            <li>Streamlined device testing and dispatch pipelines using Node-RED, reducing commissioning time across field deployments.</li>
+            <li>Liaised with external enterprise stakeholders to translate complex monitoring requirements into scalable IoT architectures.</li>
+          </ul>
+        </div>
+
+        <!-- Role 4: IoT Engineer - Upande -->
+        <div class="res-job">
+          <div class="res-job-top">
+            <span class="res-job-title">IoT Engineer</span> &mdash; <span class="res-job-company">Upande Limited</span>
+            <span class="res-job-date">Apr 2021 – Aug 2022 | Nairobi, Kenya</span>
+          </div>
+          <ul class="res-bullets">
+            <li>Assembled, calibrated, and deployed industrial sensor nodes (water level, ultrasonic, flow, weather) using LoRaWAN and GSM.</li>
+            <li>Proactively maintained field device fleets, diagnosing power faults and issuing remote firmware updates to maximize uptime.</li>
+            <li>Configured InfluxDB time-series instances for sensor data ingestion, enabling real-time analytics and client dashboard visualizations.</li>
+          </ul>
+        </div>
+
+        <!-- Role 5: Electrical Engineering Intern - NKCC -->
+        <div class="res-job">
+          <div class="res-job-top">
+            <span class="res-job-title">Electrical Engineering Intern</span> &mdash; <span class="res-job-company">New Kenya Co-operative Creameries</span>
+            <span class="res-job-date">Mar 2016 – Aug 2016 | Nyeri, Kenya</span>
+          </div>
+          <ul class="res-bullets">
+            <li>Carried out scheduled electrical preventive maintenance across industrial dairy processing plants, reducing machine downtime.</li>
+            <li>Assisted senior engineers in troubleshooting motor control panels, relay boards, and industrial automation equipment.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Dual Column: Education & Certifications -->
+      <div class="res-dual-grid">
+        <section class="res-section">
+          <h2 class="res-heading"><span class="res-bullet">&#9632;</span> Education</h2>
+          <div class="res-edu-item">
+            <div class="res-edu-degree">M.Sc. in Computer Science</div>
+            <div class="res-edu-school">Zetech University</div>
+            <div class="res-edu-meta">Ruiru, Kenya &bull; Aug 2026 – Dec 2027</div>
+          </div>
+          <div class="res-edu-item">
+            <div class="res-edu-degree">B.Sc. in Electronics &amp; Computer Engineering</div>
+            <div class="res-edu-school">Jomo Kenyatta University of Agriculture &amp; Tech. (JKUAT)</div>
+            <div class="res-edu-meta">Juja, Kiambu &bull; Graduated 2021</div>
+          </div>
+        </section>
+
+        <section class="res-section">
+          <h2 class="res-heading"><span class="res-bullet">&#9632;</span> Certifications &amp; Training</h2>
+          <ul class="res-cert-list">
+            <li><strong>CCNA (Routing &amp; Switching):</strong> AFRALTI (2018)</li>
+            <li><strong>Python &amp; Web Development:</strong> IST (2020)</li>
+            <li><strong>Android App Development:</strong> IST (2020)</li>
+            <li><strong>Languages:</strong> English (Fluent), Swahili (Fluent)</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Resume Footer -->
+      <footer class="res-canvas-footer">
+        <span>Jeff Tarimo • Curriculum Vitae</span>
+        <span>Portfolio: <a href="https://jefftarimo.co.ke">jefftarimo.co.ke</a></span>
+        <span>Confidential • Single-Page Format</span>
+      </footer>
+    </div>
+  </div>
+</div>
+{% endblock %}

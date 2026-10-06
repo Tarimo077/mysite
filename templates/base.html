@@ -1,49 +1,117 @@
 {% load static %}
-{% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Jeff Tarimo, IoT engineer, full-stack developer, and DevOps engineer building connected products and scalable platforms." />
-  <title>Jeff Tarimo | IoT, Full-Stack & DevOps Engineer</title>
+  <title>{% block title %}Jeff Tarimo | Head of Technology • IoT Systems Engineer • Full-Stack Cloud{% endblock %}</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Jeff Tarimo | Head of Technology • IoT Systems Engineer • Full-Stack Cloud" />
+  <meta name="description" content="Portfolio of Jeff Tarimo — Head of Technology at Powerpay Africa, IoT Systems Engineer, Embedded Firmware Developer (STM32, ESP32, LoRaWAN, Cellular), and Full-Stack Django/Cloud Architect based in Nairobi, Kenya. Visit jefftarimo.co.ke." />
+  <meta name="keywords" content="Jeff Tarimo, Head of Technology, Powerpay Africa, IoT Engineer, Embedded Firmware, STM32, ESP32, LoRaWAN, MicroPython, Django, Full-Stack, Nairobi Kenya, Smart Metering, InfluxDB, ClickHouse, Cloud IoT, jefftarimo.co.ke" />
+  <meta name="author" content="Jeff Tarimo" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jefftarimo.co.ke/" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jefftarimo.co.ke/" />
+  <meta property="og:title" content="Jeff Tarimo | Head of Technology • IoT Systems Engineer" />
+  <meta property="og:description" content="Directing technology strategy, edge-to-cloud IoT architectures, smart metering firmware, and scalable full-stack cloud systems." />
+  <meta property="og:image" content="https://jefftarimo.co.ke{% static 'images/myLogoCropped.jpg' %}" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://jefftarimo.co.ke/" />
+  <meta property="twitter:title" content="Jeff Tarimo | Head of Technology • IoT Systems Engineer" />
+  <meta property="twitter:description" content="Directing technology strategy, edge-to-cloud IoT architectures, smart metering firmware, and scalable full-stack cloud systems." />
+  <meta property="twitter:image" content="https://jefftarimo.co.ke{% static 'images/myLogoCropped.jpg' %}" />
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jeff Tarimo",
+    "url": "https://jefftarimo.co.ke",
+    "image": "https://jefftarimo.co.ke{% static 'images/myPhoto_no_bg.png' %}",
+    "jobTitle": "Head of Technology",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Powerpay Africa Limited"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Jomo Kenyatta University of Agriculture and Technology (JKUAT)"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Zetech University"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "Kenya"
+    },
+    "email": "mailto:tarimojeff@gmail.com",
+    "telephone": "+254790024489",
+    "sameAs": [
+      "https://linkedin.com/in/jeff-tarimo-043515151",
+      "https://github.com/Tarimo077",
+      "https://x.com/JeffTarimo"
+    ]
+  }
+  </script>
+
+  <!-- Scripts & Fonts -->
   <script src="{% static 'js/htmx.min.js' %}"></script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="icon" href="{% static 'images/myLogoCropped.jpg' %}" />
-  {% tailwind_css %}
+  <link rel="icon" type="image/jpeg" href="{% static 'images/myLogoCropped.jpg' %}" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <div class="site-shell">
+    <!-- Main Top Navigation -->
     <header class="site-header" id="top">
       <nav class="nav-bar" aria-label="Primary navigation">
-        <a href="#home" class="brand" aria-label="Jeff Tarimo home">
+        <a href="{% url 'home' %}#home" class="brand" aria-label="Jeff Tarimo Home">
           <img src="{% static 'images/myLogoCropped.jpg' %}" alt="Jeff Tarimo logo" class="brand__mark" />
           <span class="brand__copy">
             <span class="brand__name">Jeff Tarimo</span>
-            <span class="brand__role">IoT • Full-stack • DevOps</span>
+            <span class="brand__role">Head of Tech • IoT • Full-Stack Cloud</span>
           </span>
         </a>
 
         <div class="nav-links" id="primary-navigation">
-          <a href="#home" class="nav-link">Home</a>
-          <a href="#experience" class="nav-link">Experience</a>
-          <a href="#proficiencies" class="nav-link">Skills</a>
-          <a href="#portfolio" class="nav-link">Portfolio</a>
-          <a href="#contact" class="nav-link">Contact</a>
+          <a href="{% url 'home' %}#home" class="nav-link">Home</a>
+          <a href="{% url 'home' %}#architecture" class="nav-link">Architecture</a>
+          <a href="{% url 'home' %}#experience" class="nav-link">Experience</a>
+          <a href="{% url 'home' %}#proficiencies" class="nav-link">Skills</a>
+          <a href="{% url 'home' %}#portfolio" class="nav-link">Portfolio</a>
+          <a href="{% url 'home' %}#education" class="nav-link">Education</a>
+          <a href="{% url 'home' %}#contact" class="nav-link">Contact</a>
         </div>
 
         <div class="nav-actions">
-          <button type="button" class="theme-button" aria-label="Toggle dark mode" data-theme-toggle>
+          <button type="button" class="theme-button" aria-label="Toggle dark mode" data-theme-toggle title="Toggle light/dark theme">
             <i class="fa-solid fa-moon"></i>
-            <span>Theme</span>
+            <span class="theme-text">Theme</span>
           </button>
-          <a class="resume-button" href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download>
-            <i class="fa-solid fa-download"></i>
+          
+          <a class="resume-button" href="{% url 'resume' %}" title="View interactive Resume">
+            <i class="fa-solid fa-file-lines"></i>
             <span>Resume</span>
           </a>
-          <button type="button" class="mobile-toggle" aria-expanded="false" aria-controls="mobile-navigation" data-mobile-toggle>
+
+          <a class="download-button" href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download="Jeff_Tarimo_Resume.pdf" title="Download PDF Resume">
+            <i class="fa-solid fa-download"></i>
+          </a>
+
+          <button type="button" class="mobile-toggle" aria-expanded="false" aria-controls="mobile-navigation" data-mobile-toggle aria-label="Toggle navigation menu">
             <span></span>
             <span></span>
             <span></span>
@@ -51,70 +119,113 @@
         </div>
       </nav>
 
+      <!-- Mobile Dropdown Panel -->
       <div class="mobile-panel" id="mobile-navigation" data-mobile-panel>
-        <a href="#home" class="mobile-link">Home</a>
-        <a href="#experience" class="mobile-link">Experience</a>
-        <a href="#proficiencies" class="mobile-link">Skills</a>
-        <a href="#portfolio" class="mobile-link">Portfolio</a>
-        <a href="#contact" class="mobile-link">Contact</a>
-        <a class="mobile-resume" href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download>
-          <i class="fa-solid fa-download"></i> Download Resume
-        </a>
+        <a href="{% url 'home' %}#home" class="mobile-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="{% url 'home' %}#architecture" class="mobile-link"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+        <a href="{% url 'home' %}#experience" class="mobile-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="{% url 'home' %}#proficiencies" class="mobile-link"><i class="fa-solid fa-microchip"></i> Skills</a>
+        <a href="{% url 'home' %}#portfolio" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Portfolio</a>
+        <a href="{% url 'home' %}#education" class="mobile-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+        <a href="{% url 'home' %}#contact" class="mobile-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <div class="mobile-actions">
+          <a class="mobile-resume" href="{% url 'resume' %}">
+            <i class="fa-solid fa-file-lines"></i> View Resume
+          </a>
+          <a class="mobile-download" href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download="Jeff_Tarimo_Resume.pdf">
+            <i class="fa-solid fa-download"></i> PDF
+          </a>
+        </div>
       </div>
     </header>
 
+    <!-- Main Content Area -->
     <main>
       {% block content %}{% endblock %}
     </main>
 
+    <!-- Site Footer -->
     <footer class="site-footer" id="contact">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="{% static 'images/myLogoCropped.jpg' %}" alt="Jeff Tarimo logo" />
-          <div>
-            <h2>Let’s build something connected.</h2>
-            <p>Available for IoT systems, full-stack Django products, cloud infrastructure, and technical leadership.</p>
+      <div class="content-wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-brand-header">
+              <img src="{% static 'images/myLogoCropped.jpg' %}" alt="Jeff Tarimo logo" class="footer-logo" />
+              <div>
+                <h2>Let’s Build Something Connected.</h2>
+                <p>Available for technology leadership, industrial IoT systems, smart metering architectures, and scalable full-stack Django solutions.</p>
+              </div>
+            </div>
+            <div class="footer-quick-links">
+              <a href="https://jefftarimo.co.ke" class="footer-badge-link"><i class="fa-solid fa-globe"></i> jefftarimo.co.ke</a>
+              <span class="footer-badge-status"><i class="fa-solid fa-circle"></i> Available for Consultations & Projects</span>
+            </div>
+          </div>
+
+          <div class="footer-card">
+            <span class="footer-label"><i class="fa-solid fa-envelope"></i> Direct Email</span>
+            <a href="mailto:tarimojeff@gmail.com" class="footer-val">tarimojeff@gmail.com</a>
+            <span class="footer-subtext">Usually responds within 24 hours</span>
+          </div>
+
+          <div class="footer-card">
+            <span class="footer-label"><i class="fa-solid fa-phone"></i> Phone / WhatsApp</span>
+            <a href="tel:+254790024489" class="footer-val">+254 790 024 489</a>
+            <span class="footer-subtext">Nairobi, Kenya (EAT / UTC+3)</span>
+          </div>
+
+          <div class="footer-card footer-socials">
+            <span class="footer-label"><i class="fa-solid fa-share-nodes"></i> Connect Online</span>
+            <div class="social-icons">
+              <a href="https://linkedin.com/in/jeff-tarimo-043515151" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://github.com/Tarimo077" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub Repositories"><i class="fa-brands fa-github"></i></a>
+              <a href="https://x.com/JeffTarimo" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" title="X Profile"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://wa.me/254790024489" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
           </div>
         </div>
 
-        <div class="footer-card">
-          <span class="footer-label">Email</span>
-          <a href="mailto:tarimojeff@gmail.com"><i class="fa-solid fa-envelope"></i> tarimojeff@gmail.com</a>
-        </div>
-
-        <div class="footer-card">
-          <span class="footer-label">Phone</span>
-          <a href="tel:+254790024489"><i class="fa-solid fa-phone"></i> +254 790 024 489</a>
-        </div>
-
-        <div class="footer-card footer-socials">
-          <span class="footer-label">Social</span>
-          <div>
-            <a href="https://x.com/JeffTarimo" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><i class="fa-brands fa-square-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/jeff-tarimo-043515151/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/Tarimo077" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-square-github"></i></a>
+        <div class="footer-bottom">
+          <p class="copyright">© 2026 Jeff Tarimo. All rights reserved. • Hosted on <a href="https://jefftarimo.co.ke">jefftarimo.co.ke</a></p>
+          <div class="footer-bottom-links">
+            <a href="{% url 'home' %}#top">Back to Top <i class="fa-solid fa-arrow-up"></i></a>
+            <a href="{% url 'resume' %}">View Resume</a>
+            <a href="{% static 'documents/Jeff_Tarimo_Resume.pdf' %}" download>Download PDF</a>
           </div>
         </div>
       </div>
-      <p class="copyright">© 2026 Jeff Tarimo. All rights reserved.</p>
     </footer>
   </div>
 
+  <!-- Global Interaction Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Theme switching logic
       const root = document.documentElement;
       const themeToggles = document.querySelectorAll("[data-theme-toggle]");
-      const savedTheme = localStorage.getItem("theme") || "light";
+      const savedTheme = localStorage.getItem("theme") || "dark";
       root.setAttribute("data-theme", savedTheme);
+
+      const updateThemeIcon = (theme) => {
+        themeToggles.forEach(btn => {
+          const icon = btn.querySelector("i");
+          if (icon) {
+            icon.className = theme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+          }
+        });
+      };
+      updateThemeIcon(savedTheme);
 
       themeToggles.forEach((toggle) => {
         toggle.addEventListener("click", () => {
           const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
           root.setAttribute("data-theme", nextTheme);
           localStorage.setItem("theme", nextTheme);
+          updateThemeIcon(nextTheme);
         });
       });
 
+      // Mobile Menu Drawer
       const mobileToggle = document.querySelector("[data-mobile-toggle]");
       const mobilePanel = document.querySelector("[data-mobile-panel]");
       if (mobileToggle && mobilePanel) {
@@ -133,21 +244,24 @@
         });
       }
 
+      // ScrollSpy for Navigation Links
       const sections = document.querySelectorAll("main section[id]");
       const navLinks = document.querySelectorAll(".nav-link, .mobile-link");
       const setActive = () => {
         let current = "home";
         sections.forEach((section) => {
-          const top = section.offsetTop - 160;
+          const top = section.offsetTop - 180;
           if (window.scrollY >= top) current = section.id;
         });
         navLinks.forEach((link) => {
-          link.classList.toggle("is-active", link.getAttribute("href") === `#${current}`);
+          const href = link.getAttribute("href") || "";
+          link.classList.toggle("is-active", href.endsWith(`#${current}`));
         });
       };
       window.addEventListener("scroll", setActive, { passive: true });
       setActive();
 
+      // Portfolio Carousel Logic
       document.querySelectorAll("[data-carousel]").forEach((carousel) => {
         const slides = carousel.querySelectorAll(".portfolio-slide");
         if (slides.length <= 1) return;
@@ -157,7 +271,7 @@
           slides[index].classList.remove("is-active");
           index = (index + 1) % slides.length;
           slides[index].classList.add("is-active");
-        }, 4200);
+        }, 4000);
       });
     });
   </script>
