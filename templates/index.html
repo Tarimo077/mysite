@@ -249,7 +249,12 @@
     <div class="edu-cert-grid">
       <!-- Education Column -->
       <div class="edu-column reveal-up">
-        <h3 class="column-title"><i class="fa-solid fa-university"></i> Degrees &amp; Higher Education</h3>
+        <div class="edu-column__header">
+          <h3 class="column-title"><i class="fa-solid fa-university"></i> Degrees &amp; Higher Education</h3>
+          <a href="{% url 'education' %}" class="edu-portal-badge" title="Open Dedicated Academic &amp; Research Portfolio">
+            <i class="fa-solid fa-book-open"></i> Full Education Portal <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
         <div class="edu-cards-list">
           {% for edu in education %}
           <div class="edu-card">
@@ -260,6 +265,77 @@
             <div class="edu-card__school"><i class="fa-solid fa-landmark"></i> {{ edu.institution }}</div>
             <div class="edu-card__location"><i class="fa-solid fa-location-dot"></i> {{ edu.location }}</div>
             <p class="edu-card__desc">{{ edu.details }}</p>
+
+            {% if edu.project %}
+            <div class="edu-project-box">
+              <div class="edu-project-top">
+                <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ edu.project.badge }}</span>
+                <span class="edu-project-unit">{{ edu.project.unit }}</span>
+              </div>
+              <h5 class="edu-project-title">{{ edu.project.title }}</h5>
+              <p class="edu-project-desc">{{ edu.project.summary }}</p>
+
+              {% if edu.project.images %}
+              <div class="edu-project-gallery">
+                {% for img in edu.project.images %}
+                <div class="edu-gallery-item">
+                  <img src="{% static img.src %}" alt="{{ img.caption }}" class="edu-gallery-img" loading="lazy">
+                  <span class="edu-gallery-caption">{{ img.caption }}</span>
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              {% if edu.project.video %}
+              <div class="edu-project-video">
+                <div class="edu-video-header">
+                  <i class="fa-solid fa-circle-play"></i> <span>{{ edu.project.video.title }}</span>
+                </div>
+                <div class="edu-video-container">
+                  <video controls preload="metadata" playsinline class="edu-video-player">
+                    <source src="{% static edu.project.video.src %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <span class="edu-gallery-caption">{{ edu.project.video.caption }}</span>
+              </div>
+              {% endif %}
+
+              {% if edu.project.highlights %}
+              <div class="edu-project-highlights">
+                <ul>
+                  {% for h in edu.project.highlights %}
+                  <li><i class="fa-solid fa-check"></i> <span>{{ h }}</span></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+
+              {% if edu.project.tags %}
+              <div class="tech-stack">
+                {% for tag in edu.project.tags %}
+                <span class="tech-pill">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              {% endif %}
+
+              {% if edu.project.downloads %}
+              <div class="edu-downloads-row">
+                {% for d in edu.project.downloads %}
+                  {% if d.file_url %}
+                  <a href="{% static d.file_url %}" download="{{ d.file_name }}" class="edu-btn {{ d.btn_class }}">
+                    <i class="{{ d.icon }}"></i> {{ d.name }}
+                  </a>
+                  {% elif d.url %}
+                  <a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" class="edu-btn {{ d.btn_class }}">
+                    <i class="{{ d.icon }}"></i> {{ d.name }}
+                  </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+            {% endif %}
           </div>
           {% endfor %}
         </div>

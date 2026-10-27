@@ -1,0 +1,126 @@
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership | M365Consult
+Company website
+Login
+Sign up
+No name
+-
+My profile
+My applications
+My referrals
+Internal jobs
+Sign out
+No name
+-
+My profile
+My applications
+My referrals
+Internal jobs
+Company website
+Login
+Sign up
+×
+Current account
+No name
+-
+Sign out
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership
+Nairobi, Kenya
+Full-Time
+Remote
+Apply now
+Refer
+Share:
+Job Openings
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership
+Job Description:
+Location:
+100% Remote
+Employment:
+Full-time, long-term position
+Start date:
+As soon as possible after selection and agreement
+Salary:
+Startup-aligned starting compensation, based on experience and responsibilities, with the potential for substantial growth during the first few years
+About Us
+We are a startup developing software products, web applications, AI-powered tools, integrations, and business automations across different projects.
+Our delivery model combines internal ownership with outsourced development. We work with external developers and specialists, and we need strong technical leadership to turn their contributions into reliable, maintainable software.
+AI-assisted and agentic development are central to how we work. We want to move quickly, make sensible technical decisions, and build solutions that our team can understand, operate, and improve.
+We are looking for an experienced engineer who wants to join at an early stage, take meaningful responsibility, and grow with the company.
+Job Description
+We are seeking a Senior AI & Full-Stack Engineer who can develop applications across frontend and backend, integrate AI capabilities, and manage the Linux infrastructure, databases, and deployment processes supporting them.
+You should be comfortable taking a project from an initial business requirement through implementation, testing, deployment, and ongoing operation. You will work across different products and internal initiatives, helping us choose practical solutions and deliver them efficiently.
+Alongside hands-on engineering, your responsibilities may include leading developers, mentoring less experienced colleagues, coordinating outsourced contributors, and reviewing externally delivered work. Previous team leadership and mentoring experience are therefore important.
+This is an opportunity to help establish the engineering foundations of a growing startup and develop into a broader technical leadership position.
+Key Responsibilities
+Develop and maintain web applications across frontend and backend.
+Build AI-powered features, integrations, internal tools, and business automations.
+Use AI coding assistants and coding agents effectively, with appropriate testing and human review.
+Translate business requirements into clear implementation tasks and verifiable acceptance criteria.
+Design APIs, business logic, authentication, authorization, and third-party integrations.
+Manage database schemas, migrations, query performance, backups, and recovery procedures.
+Administer Linux servers, including application services, permissions, updates, networking, and troubleshooting.
+Build and maintain Docker environments, including container networking, persistent storage, configuration, and health checks.
+Manage DNS records, domain routing, TLS certificates, and reverse proxies.
+Maintain CI/CD workflows using GitHub Actions, Azure DevOps Pipelines, and appropriate build agents or runners.
+Carry out deployments with migration checks, rollback procedures, and post-deployment verification.
+Investigate production incidents and address their underlying causes.
+Coordinate outsourced developers and specialists, clarify requirements, review deliverables, and manage technical dependencies.
+Mentor developers through code reviews, practical demonstrations, and constructive feedback.
+Keep implementation proportionate to the problem, controlling unnecessary complexity, infrastructure costs, and maintenance overhead.
+Required Qualifications
+Demonstrated senior-level experience delivering and maintaining production web applications.
+Strong frontend development skills using a modern framework, JavaScript or TypeScript, HTML, and CSS.
+Strong backend development experience, including secure APIs, integrations, validation, and error handling.
+Practical experience integrating AI or LLM capabilities into software, including checking output quality, handling failures, and managing latency and usage costs.
+Substantial hands-on experience with AI coding assistants or agentic development workflows, with examples of working results you independently verified.
+Strong SQL and relational database experience, including migrations, indexing, performance analysis, and backup and recovery.
+Hands-on Linux administration and Docker deployment experience.
+A working understanding of DNS, HTTP/HTTPS, TLS, firewalls, ports, and reverse proxies.
+Practical CI/CD experience with GitHub Actions and familiarity with Azure DevOps repositories, pipelines, and build agents.
+Strong Git, pull-request, code-review, and release-management skills.
+Previous experience leading a development team or coordinating technical delivery.
+Proven mentoring experience and the ability to explain technical decisions clearly.
+Experience working with outsourced developers, contractors, or distributed teams.
+The ability to work independently, prioritize competing needs, and make sound decisions with a limited startup budget.
+Interest in a long-term, full-time role with increasing responsibility.
+Especially Valuable Experience
+Building products or engineering processes in an early-stage startup.
+Taking responsibility for several applications or services at the same time.
+Evaluating outsourced work for correctness, security, maintainability, and operational readiness.
+Developing AI agents, tool integrations, retrieval workflows, or reliable automation.
+Operating PostgreSQL and multi-service Docker environments.
+Establishing deployment standards, monitoring, incident procedures, and practical documentation.
+Helping junior developers become more effective through structured mentoring.
+Growth, Responsibility and Compensation
+Joining at this stage offers the opportunity to influence how we build software, organize delivery, and develop our engineering team.
+Initial compensation will reflect our startup budget, your experience, and the agreed scope of responsibility. As your contribution and responsibilities grow alongside the business, we aim to provide substantial salary progression during the first few years.
+For a strong contributor, the role can develop into positions such as Technical Lead, Engineering Lead, or Head of Engineering. Progression will depend on demonstrated results, leadership capability, company growth, and financial capacity. Compensation expectations and progression milestones will be discussed openly during recruitment.
+What We Offer
+A fully remote, full-time role with a long-term perspective.
+Direct involvement in technical decisions across multiple products and initiatives.
+The opportunity to build, lead, and mentor a distributed engineering team.
+Broad ownership across software, AI integration, infrastructure, and delivery.
+Close collaboration with startup leadership.
+The potential for significant career and compensation growth as the company develops.
+Remote Working Arrangement
+Our remote working setup includes a time-tracking tool that records mouse-click and keyboard-activity metrics and captures screenshots of the screen. This monitoring is part of the working arrangement and will be explained during the recruitment process.
+Applicants should be comfortable working with this setup.
+How to Apply
+We are looking to fill this core engineering role promptly. Applying early gives us the opportunity to discuss how you could help shape our technical direction from the beginning.
+Please submit your CV and a short overview covering:
+A production application you helped deliver and your own frontend and backend contributions.
+An AI feature or agentic workflow you implemented and how you verified its results.
+Your Linux, Docker, database, and deployment responsibilities.
+A team you led or developers you mentored, including the outcomes.
+Your experience coordinating outsourced development and reviewing external deliverables.
+Your earliest start date and salary expectations, taking our startup stage into account.
+Public portfolio links and GitHub repositories are welcome. Please do not share confidential customer information or credentials.
+Apply now
+Refer
+Share:
+Job Openings
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership
+Senior AI & Full-Stack Engineer - DevOps & Technical Leadership
+Follow us:
+Follow us:

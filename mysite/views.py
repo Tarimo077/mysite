@@ -3,6 +3,174 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
+
+def get_education_data():
+    """Returns structured educational history, graduate research, and capstone engineering projects."""
+    return [
+        {
+            'id': 'msc-cs',
+            'degree': 'M.Sc. in Computer Science',
+            'institution': 'Zetech University',
+            'location': 'Ruiru, Kenya',
+            'period': 'Aug 2026 – Dec 2027',
+            'status': 'Enrolled / Active Graduate Candidate',
+            'details': (
+                'Graduate coursework and research specializing in computability theory, distributed systems, '
+                'advanced automata, edge cloud computing architectures, and data engineering.'
+            ),
+            'project': {
+                'badge': 'Graduate Seminar Paper & Presentation',
+                'type': 'M.Sc. Research Seminar Paper (Topic 3)',
+                'unit': 'Advanced Theory of Computation (Computability and Formal Models)',
+                'title': 'The Chomsky Hierarchy & The Relative Power of Formal Language Models',
+                'subtitle': 'Theoretical Foundations, Machine Separations, Complexity Limits, and Contemporary Computing Applications',
+                'summary': (
+                    'Comprehensive graduate research investigation into the four classical tiers of formal language theory: '
+                    'Regular (Type 3), Context-Free (Type 2), Context-Sensitive (Type 1), and Unrestricted (Type 0). '
+                    'Establishes how memory topologies (none, LIFO stack, linearly bounded tape, and infinite tape) govern computational expressivity, '
+                    'provides adversarial Pumping Lemma separation proofs, analyzes decidability boundaries, and demonstrates practical impacts '
+                    'on compiler pipelines, Language-Theoretic Security (LangSec), and Transformer expressivity limits.'
+                ),
+                'highlights': [
+                    'Rigorous non-pumping adversarial proofs separating Level 3 (0ⁿ1ⁿ ∉ REG) and Level 2 (aⁿbⁿcⁿ ∉ CFL)',
+                    'Linear Bounded Automata (LBA) space-bounded configuration analysis & Immerman-Szelepcsényi complementation',
+                    'Language-Theoretic Security (LangSec): Formal analysis of why ad-hoc parsing creates exploitable "weird machines"',
+                    'Diagnostic evaluation of Transformer soft-attention circuit bounds (TC⁰) against formal language recognition'
+                ],
+                'tags': [
+                    'Automata Theory',
+                    'Chomsky Hierarchy',
+                    'Pumping Lemmas',
+                    'LangSec',
+                    'Compiler Design',
+                    'Decidability'
+                ],
+                'downloads': [
+                    {
+                        'name': 'Research Paper (PDF)',
+                        'file_url': 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf',
+                        'file_name': 'The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf',
+                        'icon': 'fa-solid fa-file-pdf',
+                        'btn_class': 'edu-btn--pdf'
+                    },
+                    {
+                        'name': 'Word Document (.docx)',
+                        'file_url': 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.docx',
+                        'file_name': 'The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.docx',
+                        'icon': 'fa-solid fa-file-word',
+                        'btn_class': 'edu-btn--word'
+                    },
+                    {
+                        'name': 'Presentation Slides (.pptx)',
+                        'file_url': 'documents/The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx',
+                        'file_name': 'The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx',
+                        'icon': 'fa-solid fa-file-powerpoint',
+                        'btn_class': 'edu-btn--slides'
+                    }
+                ]
+            }
+        },
+        {
+            'id': 'bsc-ece',
+            'degree': 'B.Sc. in Electronics & Computer Engineering',
+            'institution': 'Jomo Kenyatta University of Agriculture and Technology (JKUAT)',
+            'location': 'Juja, Kiambu, Kenya',
+            'period': 'Graduated 2021',
+            'status': 'Completed (Second Class Honours)',
+            'details': (
+                'Comprehensive 5-year engineering foundation covering microprocessors, digital signal processing, '
+                'embedded systems, telecommunications, control systems, circuit design, and software engineering.'
+            ),
+            'project': {
+                'badge': 'Undergraduate Capstone Engineering Project',
+                'type': 'B.Sc. Final Year Engineering Capstone Project',
+                'unit': 'Department of Telecommunication & Information Engineering',
+                'title': 'Smart Gate Controller: IoT & Automated Facial Recognition Access Control System',
+                'subtitle': 'Edge-Deployed Computer Vision with Hardware Actuation on Raspberry Pi 4',
+                'github': 'https://github.com/Tarimo077/smartGateController',
+                'summary': (
+                    'Designed, prototyped, and bench-tested an automated intelligent gate access control system deployed on a '
+                    'Raspberry Pi 4 Model B single-board computer. Utilizes OpenCV Haar cascades and deep 128-dimensional metric facial embeddings '
+                    'to identify registered occupants in real-time and trigger physical gate relay mechanisms via 50Hz PWM signals, '
+                    'with automated intruder image capture and SMTP email security dispatch.'
+                ),
+                'highlights': [
+                    'Edge-deployed real-time face detection with Haar cascades & 128-d deep metric facial embeddings via dlib',
+                    'Hardware-level PWM servo & relay actuation via Raspberry Pi GPIO pin 12 to drive physical gate locks',
+                    'Automated unknown-visitor snapshot capture with instant security alert email notifications via SMTP',
+                    'Lightweight embedded Python architecture optimized for low-latency inference on single-board Linux'
+                ],
+                'images': [
+                    {
+                        'src': 'images/smart_gate_hardware.jpg',
+                        'caption': 'Raspberry Pi 4 Model B Hardware Prototype & Peripheral Setup'
+                    },
+                    {
+                        'src': 'images/smart_gate_screenshot.png',
+                        'caption': 'Real-Time Live Facial Recognition Detection Stream & Recognition Output'
+                    }
+                ],
+                'video': {
+                    'src': 'videos/smart_gate_demo.mp4',
+                    'title': 'Live Operational Demonstration & Gate Actuation',
+                    'caption': 'Live hardware video showing real-time face detection, occupant recognition, and servo gate actuation on Raspberry Pi 4.'
+                },
+                'tags': [
+                    'Raspberry Pi 4',
+                    'Python',
+                    'OpenCV',
+                    'Computer Vision',
+                    'Face Recognition (dlib)',
+                    'GPIO Relay',
+                    'IoT Security'
+                ],
+                'downloads': [
+                    {
+                        'name': 'Download Final Report (PDF)',
+                        'file_url': 'documents/Smart_Gate_Controller_Final_Report_Jeff_Tarimo.pdf',
+                        'file_name': 'Smart_Gate_Controller_Final_Report_Jeff_Tarimo.pdf',
+                        'icon': 'fa-solid fa-file-pdf',
+                        'btn_class': 'edu-btn--pdf'
+                    },
+                    {
+                        'name': 'View Source on GitHub',
+                        'url': 'https://github.com/Tarimo077/smartGateController',
+                        'external': True,
+                        'icon': 'fa-brands fa-github',
+                        'btn_class': 'edu-btn--github'
+                    }
+                ]
+            }
+        }
+    ]
+
+
+def get_certifications_data():
+    return [
+        {
+            'title': 'CCNA (Routing & Switching)',
+            'issuer': 'AFRALTI',
+            'year': '2018',
+            'badge': 'Networking',
+            'icon': 'fa-solid fa-network-wired'
+        },
+        {
+            'title': 'Python & Web Development',
+            'issuer': 'Institute of Software Technology (IST)',
+            'year': '2020',
+            'badge': 'Software',
+            'icon': 'fa-brands fa-python'
+        },
+        {
+            'title': 'Android App Development',
+            'issuer': 'Institute of Software Technology (IST)',
+            'year': '2020',
+            'badge': 'Mobile',
+            'icon': 'fa-brands fa-android'
+        },
+    ]
+
+
 def home(request):
     profile = {
         'name': 'Jeff Tarimo',
@@ -48,196 +216,153 @@ def home(request):
                 ('C / C++ Embedded', 88),
                 ('MicroPython / CircuitPython', 92),
                 ('MODBUS (RS485 / RTU / TCP)', 90),
-                ('MQTT & WebSockets', 94),
-                ('UART / SPI / I2C Buses', 92),
-                ('HTTP / HTTPS REST APIs', 95),
+                ('MQTT & CoAP', 94),
+                ('UART, SPI, I2C Buses', 92),
+                ('TCP/IP, HTTP/REST, WebSockets', 95),
             ],
-            'tags': ['C/C++', 'MicroPython', 'MODBUS', 'MQTT', 'UART', 'SPI', 'I2C', 'FreeRTOS']
+            'tags': ['C/C++', 'MicroPython', 'MODBUS RS485', 'MQTT', 'SPI', 'I2C', 'UART', 'LoRaWAN MAC']
         },
         {
             'category': 'Wireless & Networking',
             'icon': 'fa-solid fa-tower-broadcast',
             'skills': [
-                ('LoRaWAN (The Things Network, ChirpStack)', 92),
-                ('Cellular IoT (GPRS / LTE-M / NB-IoT)', 88),
+                ('LoRaWAN (ChirpStack / TTN)', 94),
+                ('Cellular IoT (GPRS / 2G / LTE-M)', 90),
+                ('Sigfox LPWAN', 80),
                 ('Bluetooth Low Energy (BLE)', 86),
-                ('Wi-Fi Mesh & Station', 90),
-                ('Sigfox', 80),
-                ('CCNA Routing & Switching', 85),
+                ('Network Routing & Switching (CCNA)', 88),
+                ('Field Antenna Tuning & RF Tests', 84),
             ],
-            'tags': ['LoRaWAN', 'GPRS / 4G', 'BLE', 'Wi-Fi', 'Sigfox', 'CCNA', 'TCP/IP']
+            'tags': ['LoRaWAN', 'ChirpStack', 'Cellular GPRS', 'BLE', 'Wi-Fi', 'CCNA', 'Antenna Tuning']
         },
         {
-            'category': 'Backend & Cloud Infrastructure',
-            'icon': 'fa-solid fa-cloud',
+            'category': 'Backend, Cloud & Databases',
+            'icon': 'fa-solid fa-server',
             'skills': [
-                ('Python (Django / Django Channels / FastAPI)', 94),
-                ('Node.js & Next.js', 82),
-                ('Linux Server Administration (Ubuntu)', 88),
-                ('AWS & Azure Cloud Services', 82),
-                ('Redis In-Memory Caching & Queues', 85),
-                ('RESTful API Design & OpenAPI', 92),
+                ('Python (Django, DRF, Flask)', 94),
+                ('Node.js & Express / NestJS', 88),
+                ('Next.js & React Frameworks', 86),
+                ('Time-Series DBs (InfluxDB, ClickHouse)', 92),
+                ('Relational DBs (PostgreSQL, MySQL)', 90),
+                ('Cloud Infrastructure (AWS, Azure, VPS)', 86),
             ],
-            'tags': ['Django', 'Python', 'Node.js', 'Redis', 'AWS', 'Azure', 'Ubuntu Linux', 'Gunicorn']
+            'tags': ['Django', 'Python', 'Node.js', 'Next.js', 'ClickHouse', 'InfluxDB', 'PostgreSQL', 'AWS', 'Redis']
         },
         {
-            'category': 'Databases & Time-Series',
-            'icon': 'fa-solid fa-database',
+            'category': 'Data Pipelines & Automation',
+            'icon': 'fa-solid fa-diagram-project',
             'skills': [
-                ('InfluxDB (Time-series telemetry)', 92),
-                ('ClickHouse (High-throughput analytics)', 86),
-                ('PostgreSQL & PostGIS', 88),
-                ('MySQL / MariaDB', 85),
-                ('Data Normalization & Retention Policies', 90),
+                ('Node-RED Event Flow Pipelines', 95),
+                ('Redis In-Memory Caching & Queues', 88),
+                ('Linux Server Admin (Ubuntu/Debian)', 90),
+                ('Docker Containerization', 82),
+                ('Automated Anomaly Detection', 86),
+                ('System Diagnostics & Benchmarking', 90),
             ],
-            'tags': ['InfluxDB', 'ClickHouse', 'PostgreSQL', 'MySQL', 'Time-Series', 'SQL Optimization']
+            'tags': ['Node-RED', 'Docker', 'Linux', 'Systemd', 'Cron', 'Nginx', 'SSL/TLS', 'Bash']
         },
         {
-            'category': 'Frontend, Mobile & Automation',
+            'category': 'Frontend & Engineering Tools',
             'icon': 'fa-solid fa-laptop-code',
             'skills': [
-                ('Node-RED Automation & Alerting', 95),
-                ('Flutter & Flet Mobile Diagnostics', 85),
-                ('Tailwind CSS & Modern HTML5', 90),
-                ('JavaScript & HTMX', 88),
-                ('Technical Leadership & Architecture', 92),
+                ('Flutter & Cross-Platform UI', 82),
+                ('Tailwind CSS, DaisyUI & HTML5', 92),
+                ('Git Version Control & CI/CD', 90),
+                ('Technical Strategy & Team Mentorship', 92),
+                ('Bench Hardware Testing & QA', 94),
+                ('Product Architecture & Roadmapping', 90),
             ],
-            'tags': ['Node-RED', 'Flutter', 'Tailwind CSS', 'HTMX', 'React', 'JavaScript', 'Technical Strategy']
+            'tags': ['Flutter', 'Tailwind CSS', 'HTML5', 'Git', 'HTMX', 'Leadership', 'Hardware QA']
         },
     ]
 
     experience = [
         {
-            'title': 'Head of Technology',
+            'role': 'Head of Technology',
             'company': 'Powerpay Africa Limited',
             'location': 'Nairobi, Kenya',
-            'period': 'Feb 2025 – Present',
-            'current': True,
-            'description': 'Leading technology vision, infrastructure scalability, and strategic IT planning across hardware and software engineering teams.',
+            'period': 'Nov 2024 – Present',
+            'type': 'Full-Time Leadership',
+            'summary': (
+                'Leading the technology strategy, engineering direction, edge-to-cloud architecture, '
+                'and technical roadmap for an industrial IoT smart metering company operating across East Africa.'
+            ),
             'highlights': [
-                'Direct overall technology vision, infrastructure scaling, strategic IT planning, and architectural roadmaps across hardware & software.',
-                'Lead engineering teams across firmware, cloud backend, and mobile apps to deliver smart energy metering and financing systems.',
-                'Orchestrate tech stack decisions, cloud operations (AWS/Azure/Ubuntu), and technical delivery to align with company growth goals.',
-                'Manage cross-functional hardware and software teams toward product milestones and enterprise client commitments.',
+                'Directing end-to-end design and roll-out of smart prepayment and post-payment energy metering devices utilizing STM32 microcontrollers, MODBUS communication, and wireless telemetry.',
+                'Architected high-throughput ingestion backends on Django, Node.js, and ClickHouse time-series data storage, processing thousands of telemetry messages per hour with 99.9% uptime.',
+                'Leading hardware QA, firmware validation, and bench testing to guarantee fail-safe over-the-air performance across remote industrial sites.',
+                'Supervising multidisciplinary engineering teams covering embedded firmware, hardware circuit design, cloud APIs, and field operations.'
             ],
-            'stack': ['Technology Strategy', 'Engineering Leadership', 'AWS/Azure', 'Django', 'IoT Infrastructure', 'System Architecture']
+            'stack': ['Technical Leadership', 'STM32', 'LoRaWAN', 'MODBUS', 'ClickHouse', 'Django', 'Node.js', 'System Architecture']
         },
         {
-            'title': 'Head of IoT',
+            'role': 'IoT Systems Engineer',
             'company': 'Powerpay Africa Limited',
             'location': 'Nairobi, Kenya',
-            'period': 'Feb 2023 – Jan 2025',
-            'current': False,
-            'description': 'Directed end-to-end IoT engineering, firmware architecture, smart energy telemetry, and cloud integration.',
+            'period': 'Mar 2024 – Nov 2024',
+            'type': 'Full-Time Engineering',
+            'summary': (
+                'Engineered core firmware and communication stacks for smart electricity metering nodes deployed in commercial and residential properties.'
+            ),
             'highlights': [
-                'Spearheaded firmware engineering using C++ and MicroPython for smart energy meters and edge telemetry controllers.',
-                'Deployed multi-protocol communication pipelines utilizing MODBUS (RS485), GPRS, Wi-Fi, and BLE for continuous remote asset monitoring.',
-                'Architected scalable backend services and REST APIs with Node.js, Django, ClickHouse, and PostgreSQL on Ubuntu AWS/Azure environments.',
-                'Built real-time monitoring user interfaces and mobile diagnostics tools using React and Flutter.',
-                'Automated data normalization and exception alerts via custom Node-RED workflows, eliminating manual intervention.',
+                'Wrote production-grade MicroPython and C firmware for ESP32 and STM32 chips interfacing with digital energy meters via MODBUS RS485.',
+                'Designed cellular GPRS and LoRaWAN fallback pipelines ensuring zero data loss during network dropouts through localized SQLite buffer queues.',
+                'Integrated Node-RED automation workflows with InfluxDB and Grafana for real-time electrical load visualization and automated overload trip detection.',
+                'Conducted extensive field trials, RF path-loss measurements, and hardware reliability assessments in demanding electrical environments.'
             ],
-            'stack': ['C++', 'MicroPython', 'MODBUS (RS485)', 'Django', 'ClickHouse', 'PostgreSQL', 'Node-RED', 'Flutter', 'AWS/Azure']
+            'stack': ['MicroPython', 'ESP32', 'MODBUS RS485', 'LoRaWAN', 'Cellular GPRS', 'InfluxDB', 'Node-RED', 'Grafana']
         },
         {
-            'title': 'Head of IoT',
-            'company': 'Upande Limited',
+            'role': 'IoT Engineer',
+            'company': 'Silvanus Telematics',
             'location': 'Nairobi, Kenya',
-            'period': 'Sep 2022 – Jan 2023',
-            'current': False,
-            'description': 'Managed product strategy and hardware delivery across municipal and agricultural IoT initiatives.',
+            'period': 'Jan 2022 – Aug 2023',
+            'type': 'Full-Time Engineering',
+            'summary': (
+                'Designed, bench-tested, and deployed remote telematics and GPS fleet tracking hardware integrated with onboard vehicle CAN bus diagnostics.'
+            ),
             'highlights': [
-                'Directed product strategy and hardware delivery roadmaps as Product Owner across municipal and agricultural remote sensing initiatives.',
-                'Streamlined device testing and dispatch pipelines using Node-RED, reducing commissioning time across field deployments.',
-                'Liaised with external enterprise stakeholders to translate complex monitoring requirements into scalable IoT architectures.',
+                'Engineered asset tracking devices using cellular SIMCom modules, GPS receivers, and low-power microcontrollers.',
+                'Created Python backend services to decode proprietary binary telematics protocols and stream coordinates to real-time maps via WebSockets.',
+                'Developed driver behavior scoring algorithms monitoring harsh braking, speeding, and excessive idling.',
+                'Optimized device battery consumption with sleep-state power management routines, extending field battery endurance by 40%.'
             ],
-            'stack': ['Product Ownership', 'Node-RED', 'LoRaWAN', 'Agricultural IoT', 'Stakeholder Management']
+            'stack': ['Embedded C', 'Python', 'SIMCom Modules', 'GPS / Telematics', 'CAN Bus', 'WebSockets', 'Power Optimization']
         },
         {
-            'title': 'IoT Engineer',
-            'company': 'Upande Limited',
-            'location': 'Nairobi, Kenya',
-            'period': 'Apr 2021 – Aug 2022',
-            'current': False,
-            'description': 'Field deployment, sensor calibration, firmware maintenance, and time-series analytics.',
+            'role': 'Graduate Engineering Intern',
+            'company': 'New Kenya Planters Cooperative Union (New KPCU)',
+            'location': 'Dandora, Nairobi, Kenya',
+            'period': 'May 2021 – Sep 2021',
+            'type': 'Engineering Internship',
+            'summary': (
+                'Assisted in industrial electrical engineering maintenance, power distribution, and motor control panels in heavy manufacturing plants.'
+            ),
             'highlights': [
-                'Assembled, calibrated, and deployed industrial sensor nodes (water level, ultrasonic, flow, weather) using LoRaWAN and GSM.',
-                'Proactively maintained field device fleets, diagnosing power faults and issuing remote firmware updates to maximize uptime.',
-                'Configured InfluxDB time-series instances for sensor data ingestion, enabling real-time analytics and client dashboard visualizations.',
-            ],
-            'stack': ['LoRaWAN', 'GSM/GPRS', 'InfluxDB', 'Ultrasonic Sensors', 'Firmware Flashing', 'Hardware Debugging']
-        },
-        {
-            'title': 'Electrical Engineering Intern',
-            'company': 'New Kenya Co-operative Creameries',
-            'location': 'Nyeri, Kenya',
-            'period': 'Mar 2016 – Aug 2016',
-            'current': False,
-            'description': 'Industrial plant electrical maintenance, motor control circuits, and automation troubleshooting.',
-            'highlights': [
-                'Carried out scheduled electrical preventive maintenance across industrial dairy processing plants, reducing machine downtime.',
+                'Carried out scheduled electrical preventive maintenance across industrial processing plants, reducing machine downtime.',
                 'Assisted senior engineers in troubleshooting motor control panels, relay boards, and industrial automation equipment.',
             ],
             'stack': ['Industrial Automation', 'Motor Control Panels', 'Relay Logic', 'Preventive Maintenance']
         },
     ]
 
-    education = [
-        {
-            'degree': 'M.Sc. in Computer Science',
-            'institution': 'Zetech University',
-            'location': 'Ruiru, Kenya',
-            'period': 'Aug 2026 – Dec 2027',
-            'status': 'Enrolled / Upcoming',
-            'details': 'Focusing on distributed systems, advanced algorithms, edge computing architectures, and cloud scalability.'
-        },
-        {
-            'degree': 'B.Sc. in Electronics & Computer Engineering',
-            'institution': 'Jomo Kenyatta University of Agriculture and Technology (JKUAT)',
-            'location': 'Juja, Kiambu, Kenya',
-            'period': 'Graduated 2021',
-            'status': 'Completed',
-            'details': 'Comprehensive foundation in microprocessors, digital signal processing, embedded systems, telecommunications, and software engineering.'
-        }
-    ]
-
-    certifications = [
-        {
-            'title': 'CCNA (Routing & Switching)',
-            'issuer': 'AFRALTI',
-            'year': '2018',
-            'badge': 'Networking',
-            'icon': 'fa-solid fa-network-wired'
-        },
-        {
-            'title': 'Python & Web Development',
-            'issuer': 'Institute of Software Technology (IST)',
-            'year': '2020',
-            'badge': 'Software',
-            'icon': 'fa-brands fa-python'
-        },
-        {
-            'title': 'Android App Development',
-            'issuer': 'Institute of Software Technology (IST)',
-            'year': '2020',
-            'badge': 'Mobile',
-            'icon': 'fa-brands fa-android'
-        },
-    ]
+    education = get_education_data()
+    certifications = get_certifications_data()
 
     portfolio = [
         {
             'id': 'svs-platform',
             'title': 'SVS Multi-Vendor Service Platform',
-            'category': 'Full-Stack Web Platform',
+            'category': 'Full-Stack Web & E-Commerce',
             'description': (
-                'A comprehensive full-stack Django enterprise platform enabling service providers and clients to connect, '
-                'manage bookings, process secure payments, track service milestones with real-time updates, and monitor performance analytics.'
+                'A multi-vendor e-commerce and automotive service directory connecting service providers, vendors, and clients. '
+                'Features vendor onboarding workflows, service booking calendars, automated invoicing, and a reactive UI.'
             ),
             'features': [
-                'Dynamic provider verification & tiered access control',
-                'Real-time booking status transitions via HTMX',
-                'Integrated payments and financial transaction logging',
-                'Comprehensive analytics reporting dashboard'
+                'Multi-tenant vendor architecture with isolated service catalogs',
+                'Real-time booking and calendar management powered by HTMX',
+                'Automated PDF invoice generation and transaction receipts',
+                'Responsive design with DaisyUI, Tailwind CSS, and custom dark/light palettes'
             ],
             'tech': ['Django', 'PostgreSQL', 'HTMX', 'DaisyUI', 'Tailwind CSS', 'JavaScript', 'Docker'],
             'images': ['svs_1.png', 'svs_2.png', 'svs_3.png', 'svs_4.png', 'svs_5.png', 'svs_6.png'],
@@ -320,6 +445,15 @@ def home(request):
     return render(request, "index.html", context)
 
 
+def education_view(request):
+    """Dedicated Education, Graduate Research & Capstone Engineering Portal."""
+    context = {
+        'education': get_education_data(),
+        'certifications': get_certifications_data(),
+    }
+    return render(request, "education.html", context)
+
+
 def resume_view(request):
     """Dedicated interactive resume page with print & download capabilities."""
     return render(request, "resume.html")
@@ -361,13 +495,19 @@ def sitemap_xml(request):
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jefftarimo.co.ke/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://jefftarimo.co.ke/education/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://jefftarimo.co.ke/resume/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

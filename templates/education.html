@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Academic &amp; Research Portfolio | Jeff Tarimo — MSc Computer Science &amp; BSc Electronics Engineering{% endblock %}
+
+{% block content %}
+<div class="education-page-wrapper section-pad">
+  <div class="content-wrap">
+    <!-- Top Actions Toolbar -->
+    <div class="resume-toolbar reveal-up">
+      <a href="{% url 'home' %}#education" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Main Portfolio
+      </a>
+      <div class="toolbar-actions">
+        <a href="{% static 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf' %}" download class="btn-tool btn-tool--primary">
+          <i class="fa-solid fa-file-pdf"></i> MSc Paper (PDF)
+        </a>
+        <a href="{% static 'documents/The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx' %}" download class="btn-tool">
+          <i class="fa-solid fa-file-powerpoint"></i> MSc Slides (.pptx)
+        </a>
+        <a href="{% static 'documents/Smart_Gate_Controller_Final_Report_Jeff_Tarimo.pdf' %}" download class="btn-tool">
+          <i class="fa-solid fa-file-pdf"></i> BSc Report (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- Page Header Hero -->
+    <header class="edu-page-hero reveal-up">
+      <span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Academic &amp; Research Portfolio</span>
+      <h1>Education, Research &amp; Capstone Engineering</h1>
+      <p>Graduate investigation into formal language theory, computational automata, and LangSec alongside undergraduate embedded edge hardware, computer vision, and IoT security actuation.</p>
+    </header>
+
+    <!-- Deep-Dive Academic Cards -->
+    <div class="edu-deep-container">
+      {% for edu in education %}
+      <article class="edu-deep-card reveal-up" id="{{ edu.id }}">
+        <div class="edu-deep-card__header">
+          <div class="edu-deep-card__title">
+            <h2>{{ edu.degree }}</h2>
+            <div class="edu-deep-card__meta">
+              <span><i class="fa-solid fa-landmark"></i> {{ edu.institution }}</span>
+              <span><i class="fa-solid fa-location-dot"></i> {{ edu.location }}</span>
+              <span class="highlight"><i class="fa-solid fa-calendar"></i> {{ edu.period }}</span>
+            </div>
+          </div>
+          {% if edu.status %}
+          <div class="edu-deep-card__status">
+            <i class="fa-solid fa-circle-check"></i> {{ edu.status }}
+          </div>
+          {% endif %}
+        </div>
+
+        <p class="edu-card__desc" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">{{ edu.details }}</p>
+
+        {% if edu.project %}
+        <div class="edu-paper-showcase">
+          <div class="edu-project-top" style="margin-bottom: 10px;">
+            <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ edu.project.badge }}</span>
+            <span class="edu-paper-unit"><i class="fa-solid fa-layer-group"></i> {{ edu.project.unit }}</span>
+          </div>
+
+          <h3>{{ edu.project.title }}</h3>
+          {% if edu.project.subtitle %}
+          <div class="text-muted" style="font-size: 0.88rem; font-weight: 600; margin-bottom: 16px; color: var(--accent-strong);">
+            {{ edu.project.subtitle }}
+          </div>
+          {% endif %}
+
+          <div class="edu-paper-abstract">
+            <strong style="color: var(--text); display: block; margin-bottom: 6px;"><i class="fa-solid fa-quote-left"></i> Abstract &amp; Investigation Scope:</strong>
+            {{ edu.project.summary }}
+          </div>
+
+          <!-- If images are provided (e.g. BSc Smart Gate Controller) -->
+          {% if edu.project.images %}
+          <div style="margin: 22px 0 16px 0;">
+            <h4 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">
+              <i class="fa-solid fa-images"></i> Engineering Prototypes &amp; Hardware Setup
+            </h4>
+            <div class="edu-project-gallery">
+              {% for img in edu.project.images %}
+              <div class="edu-gallery-item">
+                <img src="{% static img.src %}" alt="{{ img.caption }}" class="edu-gallery-img" loading="lazy">
+                <span class="edu-gallery-caption">{{ img.caption }}</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- If video is provided (e.g. BSc Smart Gate Controller demonstration) -->
+          {% if edu.project.video %}
+          <div style="margin: 20px 0 24px 0;">
+            <h4 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">
+              <i class="fa-solid fa-video"></i> Live Demonstration Video
+            </h4>
+            <div class="edu-project-video">
+              <div class="edu-video-header">
+                <i class="fa-solid fa-circle-play"></i> <span>{{ edu.project.video.title }}</span>
+              </div>
+              <div class="edu-video-container">
+                <video controls preload="metadata" playsinline class="edu-video-player">
+                  <source src="{% static edu.project.video.src %}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <span class="edu-gallery-caption">{{ edu.project.video.caption }}</span>
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- Key Highlights / Architecture Pillars -->
+          <div class="edu-paper-grid">
+            <div class="edu-spec-box">
+              <h4><i class="fa-solid fa-circle-nodes"></i> Core Highlights &amp; Findings</h4>
+              <ul>
+                {% for h in edu.project.highlights %}
+                <li><i class="fa-solid fa-check"></i> <span>{{ h }}</span></li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            {% if edu.id == 'msc-cs' %}
+            <div class="edu-spec-box">
+              <h4><i class="fa-solid fa-cubes"></i> Formal Hierarchy Breakdown</h4>
+              <ul>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Type 3 (Regular):</strong> DFA / NFA / RegEx &bull; No memory &bull; $O(n)$ time &bull; Fully Decidable</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Type 2 (Context-Free):</strong> Pushdown Automata (PDA) &bull; LIFO Stack memory &bull; $O(n^3)$ CYK</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Type 1 (Context-Sensitive):</strong> Linear Bounded Automata (LBA) &bull; Tape $\le n$ &bull; PSPACE-complete</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Type 0 (Unrestricted):</strong> Turing Machine &bull; Infinite Tape &bull; Turing-Complete (Undecidable)</li>
+              </ul>
+            </div>
+            {% elif edu.id == 'bsc-ece' %}
+            <div class="edu-spec-box">
+              <h4><i class="fa-solid fa-microchip"></i> Hardware &amp; Actuation Specs</h4>
+              <ul>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>SBC:</strong> Raspberry Pi 4 Model B (Quad-core ARM Cortex-A72 @ 1.5GHz)</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Actuation:</strong> 50Hz PWM Servo / Relay trigger via Raspberry Pi GPIO pin 12</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Vision Pipeline:</strong> Haar Cascades face localization + dlib 128-d metric embeddings</li>
+                <li><i class="fa-solid fa-angle-right"></i> <strong>Security Alerts:</strong> Instant SMTP intruder alert email with automated snapshot</li>
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- Tech stack pills -->
+          {% if edu.project.tags %}
+          <div style="margin-top: 16px;">
+            <div class="tech-stack">
+              {% for tag in edu.project.tags %}
+              <span class="tech-pill">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- Download Buttons Row -->
+          {% if edu.project.downloads %}
+          <div class="edu-downloads-row" style="margin-top: 20px;">
+            {% for d in edu.project.downloads %}
+              {% if d.file_url %}
+              <a href="{% static d.file_url %}" download="{{ d.file_name }}" class="edu-btn {{ d.btn_class }}">
+                <i class="{{ d.icon }}"></i> {{ d.name }}
+              </a>
+              {% elif d.url %}
+              <a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" class="edu-btn {{ d.btn_class }}">
+                <i class="{{ d.icon }}"></i> {{ d.name }}
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+
+      <!-- Certifications & Accreditations Card -->
+      <section class="edu-deep-card reveal-up">
+        <div class="edu-deep-card__header">
+          <div class="edu-deep-card__title">
+            <h2>Industry Certifications &amp; Accreditations</h2>
+            <div class="edu-deep-card__meta">
+              <span><i class="fa-solid fa-award"></i> Professional Development</span>
+              <span><i class="fa-solid fa-network-wired"></i> Networking &amp; Embedded</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-paper-grid">
+          {% for cert in certifications %}
+          <div class="edu-spec-box">
+            <h4><i class="{{ cert.icon }}"></i> {{ cert.title }}</h4>
+            <ul>
+              <li><i class="fa-solid fa-building"></i> <strong>Issuer:</strong> {{ cert.issuer }}</li>
+              <li><i class="fa-solid fa-calendar-check"></i> <strong>Year:</strong> {{ cert.year }}</li>
+              <li><i class="fa-solid fa-tag"></i> <strong>Category:</strong> {{ cert.badge }}</li>
+            </ul>
+          </div>
+          {% endfor %}
+
+          <!-- Spoken Languages Box -->
+          <div class="edu-spec-box">
+            <h4><i class="fa-solid fa-language"></i> Spoken &amp; Written Languages</h4>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> <strong>English:</strong> Native / Full Professional Fluency</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Swahili:</strong> Native / Full Professional Fluency</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}
