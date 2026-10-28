@@ -351,6 +351,46 @@ def home(request):
 
     portfolio = [
         {
+            'id': 'jt-erp',
+            'title': 'JT ERP — Enterprise Resource Planning Suite',
+            'category': 'Enterprise Operations & Finance ERP',
+            'url': 'https://erp.jefftarimo.co.ke',
+            'url_display': 'erp.jefftarimo.co.ke',
+            'description': (
+                'End-to-end cloud ERP platform engineered for multi-department operations, project & task tracking, '
+                'procurement workflows, payment vouchers, inventory & petty cash controls, HR leave/timesheets, and internal team messaging.'
+            ),
+            'features': [
+                'Multi-stage approval pipelines for Payment Vouchers & Item Requisitions with PDF/Word/Excel exports',
+                'Interactive project boards, employee timesheets, leave management, and role-based access control',
+                'Real-time internal team chat channels, direct messaging, and instant activity notifications',
+                'Serverless cloud architecture backed by managed PostgreSQL, OTP 2FA security, and automated SMTP alerts'
+            ],
+            'tech': ['Django', 'PostgreSQL', 'Tailwind CSS', 'DaisyUI', 'ReportLab PDF', 'OpenPyXL', 'Vercel'],
+            'images': ['jterp_1.png', 'jterp_2.png', 'jterp_3.png', 'jterp_4.png'],
+            'icon': 'fa-solid fa-sitemap'
+        },
+        {
+            'id': 'qiksearch-platform',
+            'title': 'Qiksearch Agricultural E-Commerce Platform',
+            'category': 'E-Commerce & Live CMS Platform',
+            'url': 'https://qiksearch.jefftarimo.co.ke',
+            'url_display': 'qiksearch.jefftarimo.co.ke',
+            'description': (
+                'High-performance mobile-first agricultural machinery and farm supplies storefront engineered to replace legacy WooCommerce '
+                'with sub-200ms responses, multi-faceted catalog filtering, 1-click WhatsApp ordering, and a real-time Superadmin Live Editor.'
+            ),
+            'features': [
+                'Superadmin Live Editor (`/superadmin/live-editor/`) with instant in-memory component preview across Desktop/Tablet/Mobile viewports',
+                'Multi-faceted filtering, debounced typeahead search, dynamic discount badges, and Grid/List view toggles',
+                'Direct pre-formatted WhatsApp order routing (`wa.me`) and stateless signed-cookie cart & wishlist sessions',
+                'Automated Schema.org JSON-LD product metadata, dynamic XML sitemaps, and live Google Shopping Merchant feeds'
+            ],
+            'tech': ['Django 5.2', 'Tailwind CSS', 'Vanilla JS', 'WhiteNoise', 'JSON-LD SEO', 'Google Merchant XML'],
+            'images': ['qiksearch_1.png', 'qiksearch_2.png', 'qiksearch_3.png', 'qiksearch_4.png'],
+            'icon': 'fa-solid fa-wheat-awn'
+        },
+        {
             'id': 'svs-platform',
             'title': 'SVS Multi-Vendor Service Platform',
             'category': 'Full-Stack Web & E-Commerce',

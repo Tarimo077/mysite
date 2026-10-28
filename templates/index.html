@@ -208,11 +208,22 @@
           {% endfor %}
           <div class="portfolio-overlay"></div>
           <div class="portfolio-badge"><i class="{{ p.icon }}"></i> {{ p.category }}</div>
+          {% if p.url %}
+          <a href="{{ p.url }}" target="_blank" rel="noopener noreferrer" class="portfolio-live-pill" title="Open {{ p.url_display }}">
+            <span class="pulse-dot"></span>
+            <span>{{ p.url_display|default:p.url }}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          {% endif %}
         </div>
 
         <div class="portfolio-body">
           <div class="portfolio-title-row">
+            {% if p.url %}
+            <h3><a href="{{ p.url }}" target="_blank" rel="noopener noreferrer" class="portfolio-title-link">{{ p.title }}</a></h3>
+            {% else %}
             <h3>{{ p.title }}</h3>
+            {% endif %}
           </div>
           <p class="portfolio-desc">{{ p.description }}</p>
 
@@ -230,6 +241,16 @@
             <span class="tech-pill">{{ tech }}</span>
             {% endfor %}
           </div>
+
+          {% if p.url %}
+          <div class="portfolio-actions">
+            <a href="{{ p.url }}" target="_blank" rel="noopener noreferrer" class="portfolio-visit-btn">
+              <i class="fa-solid fa-globe"></i>
+              <span>Launch {{ p.url_display|default:p.title }}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          {% endif %}
         </div>
       </article>
       {% endfor %}
