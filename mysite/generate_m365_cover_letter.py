@@ -125,7 +125,7 @@ def build_m365_cover_letter(output_path):
 
     contact_html = (
         "Nairobi, Kenya &bull; <a href='tel:+254790024489' color='#0f766e'><b>+254 790 024 489</b></a><br/>"
-        "<a href='mailto:tarimojeff@gmail.com' color='#0f766e'>tarimojeff@gmail.com</a> &bull; "
+        "<a href='mailto:business@jefftarimo.co.ke' color='#0f766e'>business@jefftarimo.co.ke</a> &bull; "
         "<a href='https://jefftarimo.co.ke' color='#0f766e'><b>jefftarimo.co.ke</b></a><br/>"
         "<a href='https://linkedin.com/in/jeff-tarimo-043515151' color='#0f766e'>linkedin.com/in/jeff-tarimo</a> &bull; "
         "<a href='https://github.com/Tarimo077' color='#0f766e'>github.com/Tarimo077</a>"
@@ -233,7 +233,7 @@ def build_m365_cover_letter(output_path):
         "Sincerely,<br/>"
         "<b>Jeff Tarimo</b><br/>"
         "<font color='#475569'>Head of Technology &bull; Full-Stack &amp; AI Systems Engineer</font><br/>"
-        "<font color='#64748b'>+254 790 024 489 &bull; tarimojeff@gmail.com &bull; Nairobi, Kenya</font>"
+        "<font color='#64748b'>+254 790 024 489 &bull; business@jefftarimo.co.ke &bull; Nairobi, Kenya</font>"
     )
     story.append(Paragraph(signoff_text, signoff_style))
 

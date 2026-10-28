@@ -1,5 +1,5 @@
 **JEFF TARIMO**  
-Nairobi, Kenya • +254 790 024 489 • tarimojeff@gmail.com  
+Nairobi, Kenya • +254 790 024 489 • business@jefftarimo.co.ke  
 Portfolio: [jefftarimo.co.ke](https://jefftarimo.co.ke) • LinkedIn: [linkedin.com/in/jeff-tarimo-043515151](https://linkedin.com/in/jeff-tarimo-043515151) • GitHub: [github.com/Tarimo077](https://github.com/Tarimo077)  
 
 ---
@@ -36,4 +36,4 @@ Kutuma’s rapid expansion across African logistics demands technical rigor, ope
 Sincerely,  
 **Jeff Tarimo**  
 Head of Technology • Full-Stack & IoT Systems Architect  
-+254 790 024 489 • tarimojeff@gmail.com • Nairobi, Kenya  
++254 790 024 489 • business@jefftarimo.co.ke • Nairobi, Kenya  

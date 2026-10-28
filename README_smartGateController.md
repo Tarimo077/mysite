@@ -210,7 +210,7 @@ For full mathematical proofs, confusion matrices, false positive/negative analys
 - **Portfolio:** [jefftarimo.co.ke](https://jefftarimo.co.ke)  
 - **GitHub:** [@Tarimo077](https://github.com/Tarimo077)  
 - **LinkedIn:** [jeff-tarimo](https://linkedin.com/in/jeff-tarimo-043515151)  
-- **Email:** [tarimojeff@gmail.com](mailto:tarimojeff@gmail.com)
+- **Email:** [business@jefftarimo.co.ke](mailto:business@jefftarimo.co.ke)
 
 ---
 

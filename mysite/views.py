@@ -176,7 +176,7 @@ def home(request):
         'name': 'Jeff Tarimo',
         'headline': 'Head of Technology • IoT Systems Engineer • Full-Stack Cloud',
         'location': 'Nairobi, Kenya',
-        'email': 'tarimojeff@gmail.com',
+        'email': 'business@jefftarimo.co.ke',
         'phone': '+254790024489',
         'phone_display': '+254 790 024 489',
         'website': 'https://jefftarimo.co.ke',
