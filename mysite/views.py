@@ -68,7 +68,173 @@ def get_education_data():
                         'btn_class': 'edu-btn--slides'
                     }
                 ]
-            }
+            },
+            'projects': [
+                {
+                    'id': 'chomsky-hierarchy',
+                    'badge': 'Graduate Seminar Paper & Presentation',
+                    'type': 'M.Sc. Research Seminar Paper (Topic 3)',
+                    'unit': 'Advanced Theory of Computation (Computability and Formal Models)',
+                    'title': 'The Chomsky Hierarchy & The Relative Power of Formal Language Models',
+                    'subtitle': 'Theoretical Foundations, Machine Separations, Complexity Limits, and Contemporary Computing Applications',
+                    'summary': (
+                        'Comprehensive graduate research investigation into the four classical tiers of formal language theory: '
+                        'Regular (Type 3), Context-Free (Type 2), Context-Sensitive (Type 1), and Unrestricted (Type 0). '
+                        'Establishes how memory topologies (none, LIFO stack, linearly bounded tape, and infinite tape) govern computational expressivity, '
+                        'provides adversarial Pumping Lemma separation proofs, analyzes decidability boundaries, and demonstrates practical impacts '
+                        'on compiler pipelines, Language-Theoretic Security (LangSec), and Transformer expressivity limits.'
+                    ),
+                    'highlights': [
+                        'Rigorous non-pumping adversarial proofs separating Level 3 (0ⁿ1ⁿ ∉ REG) and Level 2 (aⁿbⁿcⁿ ∉ CFL)',
+                        'Linear Bounded Automata (LBA) space-bounded configuration analysis & Immerman-Szelepcsényi complementation',
+                        'Language-Theoretic Security (LangSec): Formal analysis of why ad-hoc parsing creates exploitable "weird machines"',
+                        'Diagnostic evaluation of Transformer soft-attention circuit bounds (TC⁰) against formal language recognition'
+                    ],
+                    'spec_title': 'Formal Hierarchy Breakdown',
+                    'spec_icon': 'fa-solid fa-cubes',
+                    'specs': [
+                        {'label': 'Type 3 (Regular):', 'text': 'DFA / NFA / RegEx • No memory • O(n) time • Fully Decidable'},
+                        {'label': 'Type 2 (Context-Free):', 'text': 'Pushdown Automata (PDA) • LIFO Stack memory • O(n³) CYK'},
+                        {'label': 'Type 1 (Context-Sensitive):', 'text': 'Linear Bounded Automata (LBA) • Tape ≤ n • PSPACE-complete'},
+                        {'label': 'Type 0 (Unrestricted):', 'text': 'Turing Machine • Infinite Tape • Turing-Complete (Undecidable)'},
+                    ],
+                    'tags': [
+                        'Automata Theory',
+                        'Chomsky Hierarchy',
+                        'Pumping Lemmas',
+                        'LangSec',
+                        'Compiler Design',
+                        'Decidability'
+                    ],
+                    'downloads': [
+                        {
+                            'name': 'Research Paper (PDF)',
+                            'file_url': 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf',
+                            'file_name': 'The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf',
+                            'icon': 'fa-solid fa-file-pdf',
+                            'btn_class': 'edu-btn--pdf'
+                        },
+                        {
+                            'name': 'Word Document (.docx)',
+                            'file_url': 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.docx',
+                            'file_name': 'The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.docx',
+                            'icon': 'fa-solid fa-file-word',
+                            'btn_class': 'edu-btn--word'
+                        },
+                        {
+                            'name': 'Presentation Slides (.pptx)',
+                            'file_url': 'documents/The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx',
+                            'file_name': 'The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx',
+                            'icon': 'fa-solid fa-file-powerpoint',
+                            'btn_class': 'edu-btn--slides'
+                        }
+                    ]
+                },
+                {
+                    'id': 'security-smells-iac',
+                    'badge': 'Graduate Security Presentation (Week 1)',
+                    'type': 'ICS 6140 Seminar Presentation',
+                    'unit': 'ICS 6140: Computer Systems Security (Secure Software Development)',
+                    'title': 'The Seven Sins: Security Smells in Infrastructure as Code Scripts',
+                    'subtitle': 'Empirical Analysis of DevSecOps Anti-Patterns, Static Linting (SLIC), and CWE Weaknesses in Production IaC',
+                    'summary': (
+                        'Critical security presentation examining recurring insecure coding patterns ("security smells") across 15,232 production '
+                        'Infrastructure as Code (Puppet) scripts mined from 293 open-source repositories (GitHub, Mozilla, OpenStack, and Wikimedia). '
+                        'Evaluates the SLIC static analysis rule engine, maps seven core configuration anti-patterns to MITRE Common Weakness Enumerations (CWE), '
+                        'and analyzes smell persistence (up to 98 months) alongside developer remediation feedback.'
+                    ),
+                    'highlights': [
+                        'Taxonomy of the "Seven Sins" mapped to CWEs: Hard-coded Secrets, Admin by Default, Invalid IP (0.0.0.0) Binding, HTTP without TLS, Weak Crypto, Empty Passwords, and Suspicious Comments',
+                        'SLIC Static Analyzer Architecture: Lexical token vectorization + AST boolean rule predicates achieving 0.99 Precision and 0.99 Recall',
+                        'Empirical Findings: 21,201 security smells identified across 15,232 scripts, including 16,952 hard-coded secrets persisting up to 98 months (~8.1 years)',
+                        'DevSecOps Shift-Left Mitigation: Pre-commit AST linting gates, centralized secret vaulting (HashiCorp Vault), and zero-trust configuration defaults'
+                    ],
+                    'spec_title': 'The Seven IaC Security Sins (CWE Mapping)',
+                    'spec_icon': 'fa-solid fa-shield-halved',
+                    'specs': [
+                        {'label': 'Hard-Coded Secrets (CWE-798):', 'text': '16,952 occurrences (~80% of all smells) • Keys, usernames & 1,326 passwords'},
+                        {'label': 'Invalid IP & Cleartext (CWE-284/319):', 'text': '0.0.0.0 wildcard bindings & unencrypted HTTP endpoints susceptible to MITM'},
+                        {'label': 'Weak Crypto & Privs (CWE-327/250):', 'text': 'Broken MD5/SHA-1 password hashing & default root/admin user provisioning'},
+                        {'label': 'Empirical Longevity & Acceptance:', 'text': 'Up to 98 months persistence in Git • 64.4% practitioner bug acceptance rate'},
+                    ],
+                    'tags': [
+                        'Secure Software Development',
+                        'DevSecOps',
+                        'Infrastructure as Code (IaC)',
+                        'Static Analysis (SLIC)',
+                        'MITRE CWE',
+                        'Secret Management'
+                    ],
+                    'downloads': [
+                        {
+                            'name': 'Presentation Slides (.pptx)',
+                            'file_url': 'documents/ICS_6140_Tarimo_Jeff_Security_Smells_Presentation.pptx',
+                            'file_name': 'ICS_6140_Tarimo_Jeff_Security_Smells_Presentation.pptx',
+                            'icon': 'fa-solid fa-file-powerpoint',
+                            'btn_class': 'edu-btn--slides'
+                        },
+                        {
+                            'name': 'Reference Paper (ICSE 2019 PDF)',
+                            'url': 'https://akondrahman.github.io/files/papers/icse19_slic.pdf',
+                            'external': True,
+                            'icon': 'fa-solid fa-arrow-up-right-from-square',
+                            'btn_class': 'edu-btn--pdf'
+                        }
+                    ]
+                },
+                {
+                    'id': 'biometric-security-systems',
+                    'badge': 'Graduate Security Presentation (Week 2)',
+                    'type': 'ICS 6140 Seminar Presentation',
+                    'unit': 'ICS 6140: Computer Systems Security (Biometric Security Systems)',
+                    'title': 'A Survey of Biometrics Security Systems: Technologies, Architectures & Challenges',
+                    'subtitle': 'Comparative Analysis of Physiological & Behavioral Modalities, Access Control Middleware, and Anti-Spoofing Defenses',
+                    'summary': (
+                        'Comprehensive evaluation of biometric authentication architectures across physical and logical access control domains. '
+                        'Examines the seven foundational biometric criteria (uniqueness, universality, permanence, collectability, performance, acceptability, '
+                        'and circumvention), compares physiological and behavioral feature extraction pipelines, and proposes modern defense-in-depth '
+                        'mitigations against presentation attacks, AI deepfakes, and template irrevocability.'
+                    ),
+                    'highlights': [
+                        'Modality Feature Extraction: Fingerprint minutiae (Loops 60%, Whorls 34%), 200+ point Iris textural mapping, and subcutaneous Near-IR Palm Vein scanning (0.5s verification)',
+                        'Access Control & Middleware: Bridging edge biometric sensors with centralized cryptographic verification servers across physical and logical domains',
+                        'Privacy & Threat Analysis: Addressing the Irrevocability Dilemma of biological templates, function creep, covert surveillance, and FAR/FRR trade-offs',
+                        'Resilient Engineering Defenses: Multi-modal sensor fusion, hardware liveness detection (pulse/thermal), and cancelable homomorphic templates'
+                    ],
+                    'spec_title': 'Biometric Modalities & Defense Architecture',
+                    'spec_icon': 'fa-solid fa-fingerprint',
+                    'specs': [
+                        {'label': 'Iris & Subcutaneous Vein:', 'text': '99.9% accuracy • 200+ iris points • 0.5s Near-IR vascular scan • Spoof-resistant'},
+                        {'label': 'Fingerprint & Facial Geometry:', 'text': 'Ridge endings/bifurcations & nodal facial distances • Contactless & edge-ready'},
+                        {'label': 'Voice & DNA Profiling:', 'text': 'Vocal tract + behavioral pitch challenges • VNTR tandem repeat genetic loci'},
+                        {'label': 'Modern Hardening:', 'text': 'Multi-modal fusion • Hardware liveness anti-spoofing • Cancelable fuzzy vaults'},
+                    ],
+                    'tags': [
+                        'Biometric Security',
+                        'Access Control',
+                        'Iris & Vein Recognition',
+                        'Minutiae Matching',
+                        'Liveness Detection',
+                        'Cancelable Biometrics'
+                    ],
+                    'downloads': [
+                        {
+                            'name': 'Presentation Slides (.pptx)',
+                            'file_url': 'documents/ICS_6140_Jeff_TARIMO_Biometric_Security_Presentation.pptx',
+                            'file_name': 'ICS_6140_Jeff_TARIMO_Biometric_Security_Presentation.pptx',
+                            'icon': 'fa-solid fa-file-powerpoint',
+                            'btn_class': 'edu-btn--slides'
+                        },
+                        {
+                            'name': 'Reference Survey Paper (WUSTL)',
+                            'url': 'https://classes.engineering.wustl.edu/~jain/cse571-11/ftp/biomet/',
+                            'external': True,
+                            'icon': 'fa-solid fa-arrow-up-right-from-square',
+                            'btn_class': 'edu-btn--pdf'
+                        }
+                    ]
+                }
+            ]
         },
         {
             'id': 'bsc-ece',

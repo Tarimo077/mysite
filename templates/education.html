@@ -13,10 +13,16 @@
       </a>
       <div class="toolbar-actions">
         <a href="{% static 'documents/The_Chomsky_Hierarchy_Research_Paper_Jeff_Tarimo.pdf' %}" download class="btn-tool btn-tool--primary">
-          <i class="fa-solid fa-file-pdf"></i> MSc Paper (PDF)
+          <i class="fa-solid fa-file-pdf"></i> Theory of Comp Paper (PDF)
         </a>
         <a href="{% static 'documents/The_Chomsky_Hierarchy_Presentation_Jeff_Tarimo.pptx' %}" download class="btn-tool">
-          <i class="fa-solid fa-file-powerpoint"></i> MSc Slides (.pptx)
+          <i class="fa-solid fa-file-powerpoint"></i> Chomsky Slides (.pptx)
+        </a>
+        <a href="{% static 'documents/ICS_6140_Tarimo_Jeff_Security_Smells_Presentation.pptx' %}" download class="btn-tool">
+          <i class="fa-solid fa-file-powerpoint"></i> IaC Security Slides (.pptx)
+        </a>
+        <a href="{% static 'documents/ICS_6140_Jeff_TARIMO_Biometric_Security_Presentation.pptx' %}" download class="btn-tool">
+          <i class="fa-solid fa-file-powerpoint"></i> Biometrics Slides (.pptx)
         </a>
         <a href="{% static 'documents/Smart_Gate_Controller_Final_Report_Jeff_Tarimo.pdf' %}" download class="btn-tool">
           <i class="fa-solid fa-file-pdf"></i> BSc Report (PDF)
@@ -28,7 +34,7 @@
     <header class="edu-page-hero reveal-up">
       <span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Academic &amp; Research Portfolio</span>
       <h1>Education, Research &amp; Capstone Engineering</h1>
-      <p>Graduate investigation into formal language theory, computational automata, and LangSec alongside undergraduate embedded edge hardware, computer vision, and IoT security actuation.</p>
+      <p>Graduate investigations into formal language theory, DevSecOps infrastructure security, and biometric authentication systems alongside undergraduate embedded edge hardware and computer vision.</p>
     </header>
 
     <!-- Deep-Dive Academic Cards -->
@@ -53,7 +59,76 @@
 
         <p class="edu-card__desc" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">{{ edu.details }}</p>
 
-        {% if edu.project %}
+        {% if edu.projects %}
+          {% for proj in edu.projects %}
+          <div class="edu-paper-showcase" id="{{ proj.id }}" style="{% if not forloop.first %}margin-top: 28px;{% endif %}">
+            <div class="edu-project-top" style="margin-bottom: 10px;">
+              <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ proj.badge }}</span>
+              <span class="edu-paper-unit"><i class="fa-solid fa-layer-group"></i> {{ proj.unit }}</span>
+            </div>
+
+            <h3>{{ proj.title }}</h3>
+            {% if proj.subtitle %}
+            <div class="text-muted" style="font-size: 0.88rem; font-weight: 600; margin-bottom: 16px; color: var(--accent-strong);">
+              {{ proj.subtitle }}
+            </div>
+            {% endif %}
+
+            <div class="edu-paper-abstract">
+              <strong style="color: var(--text); display: block; margin-bottom: 6px;"><i class="fa-solid fa-quote-left"></i> Abstract &amp; Investigation Scope:</strong>
+              {{ proj.summary }}
+            </div>
+
+            <div class="edu-paper-grid">
+              <div class="edu-spec-box">
+                <h4><i class="fa-solid fa-circle-nodes"></i> Core Highlights &amp; Findings</h4>
+                <ul>
+                  {% for h in proj.highlights %}
+                  <li><i class="fa-solid fa-check"></i> <span>{{ h }}</span></li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              {% if proj.specs %}
+              <div class="edu-spec-box">
+                <h4><i class="{{ proj.spec_icon|default:'fa-solid fa-cubes' }}"></i> {{ proj.spec_title }}</h4>
+                <ul>
+                  {% for s in proj.specs %}
+                  <li><i class="fa-solid fa-angle-right"></i> <strong>{{ s.label }}</strong> {{ s.text }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+
+            {% if proj.tags %}
+            <div style="margin-top: 16px;">
+              <div class="tech-stack">
+                {% for tag in proj.tags %}
+                <span class="tech-pill">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if proj.downloads %}
+            <div class="edu-downloads-row" style="margin-top: 20px;">
+              {% for d in proj.downloads %}
+                {% if d.file_url %}
+                <a href="{% static d.file_url %}" download="{{ d.file_name }}" class="edu-btn {{ d.btn_class }}">
+                  <i class="{{ d.icon }}"></i> {{ d.name }}
+                </a>
+                {% elif d.url %}
+                <a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" class="edu-btn {{ d.btn_class }}">
+                  <i class="{{ d.icon }}"></i> {{ d.name }}
+                </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        {% elif edu.project %}
         <div class="edu-paper-showcase">
           <div class="edu-project-top" style="margin-bottom: 10px;">
             <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ edu.project.badge }}</span>

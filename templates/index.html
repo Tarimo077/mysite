@@ -287,7 +287,52 @@
             <div class="edu-card__location"><i class="fa-solid fa-location-dot"></i> {{ edu.location }}</div>
             <p class="edu-card__desc">{{ edu.details }}</p>
 
-            {% if edu.project %}
+            {% if edu.projects %}
+              {% for proj in edu.projects %}
+              <div class="edu-project-box" style="{% if not forloop.first %}margin-top: 18px;{% endif %}">
+                <div class="edu-project-top">
+                  <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ proj.badge }}</span>
+                  <span class="edu-project-unit">{{ proj.unit }}</span>
+                </div>
+                <h5 class="edu-project-title">{{ proj.title }}</h5>
+                <p class="edu-project-desc">{{ proj.summary }}</p>
+
+                {% if proj.highlights %}
+                <div class="edu-project-highlights">
+                  <ul>
+                    {% for h in proj.highlights %}
+                    <li><i class="fa-solid fa-check"></i> <span>{{ h }}</span></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endif %}
+
+                {% if proj.tags %}
+                <div class="tech-stack">
+                  {% for tag in proj.tags %}
+                  <span class="tech-pill">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if proj.downloads %}
+                <div class="edu-downloads-row">
+                  {% for d in proj.downloads %}
+                    {% if d.file_url %}
+                    <a href="{% static d.file_url %}" download="{{ d.file_name }}" class="edu-btn {{ d.btn_class }}">
+                      <i class="{{ d.icon }}"></i> {{ d.name }}
+                    </a>
+                    {% elif d.url %}
+                    <a href="{{ d.url }}" target="_blank" rel="noopener noreferrer" class="edu-btn {{ d.btn_class }}">
+                      <i class="{{ d.icon }}"></i> {{ d.name }}
+                    </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+              {% endfor %}
+            {% elif edu.project %}
             <div class="edu-project-box">
               <div class="edu-project-top">
                 <span class="edu-project-badge"><i class="fa-solid fa-microscope"></i> {{ edu.project.badge }}</span>
