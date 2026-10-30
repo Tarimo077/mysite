@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DL/T 645-2007 MQTT Meter Payload Workbench</title>
+<style>
+:root{
+  --bg:#f6f8fb;--card:#fff;--text:#172033;--muted:#667085;--line:#dfe5ee;
+  --accent:#2563eb;--accent2:#1d4ed8;--ok:#067647;--bad:#b42318;--warn:#b54708;
+  --code:#f2f4f7;--shadow:0 8px 26px rgba(16,24,40,.06)
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1280px;margin:auto;padding:18px 22px}
+h1{font-size:23px;margin:0 0 4px}.sub{color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tab{border:1px solid #b8c2d1;background:#ffffff;color:#172033;padding:8px 12px;border-radius:9px;cursor:pointer;font-weight:700;opacity:1}
+.tab:hover{background:#eef4ff;color:#1d4ed8}
+.tab.active{background:#2563eb;border-color:#2563eb;color:#ffffff}
+main{max-width:1280px;margin:auto;padding:22px}
+.panel{display:none}.panel.active{display:block}
+.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:18px}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}
+.card h2{font-size:17px;margin:0 0 12px}.card h3{font-size:14px;margin:16px 0 8px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:620px){.row{grid-template-columns:1fr}}
+label{display:block;font-weight:650;margin-bottom:5px}.hint{font-size:12px;color:var(--muted);margin-top:4px}.optionHelp{font-size:12px;color:#475467;background:#f8fafc;border:1px solid #e4e7ec;border-radius:8px;padding:8px;margin-top:8px}
+input,select,textarea{width:100%;border:1px solid #cfd6e1;background:#fff;color:var(--text);border-radius:9px;padding:10px 11px;font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#84adff;box-shadow:0 0 0 3px #eef4ff}
+textarea{min-height:112px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical}
+button{border:0;border-radius:9px;padding:9px 12px;font-weight:700;cursor:pointer;background:var(--accent);color:#fff}
+button:hover{background:var(--accent2)} button.secondary{background:#fff;color:var(--text);border:1px solid var(--line)} button.secondary:hover{background:#f8fafc}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.out{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:12px;min-height:48px;white-space:pre-wrap;word-break:break-all;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.kv{display:grid;grid-template-columns:180px 1fr;gap:6px 12px;padding:7px 0;border-bottom:1px solid #eef1f5}.kv:last-child{border:0}.k{color:var(--muted)} .v{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-word}
+.badge{display:inline-block;padding:3px 7px;border-radius:999px;font-size:12px;font-weight:700;background:#eef4ff;color:#1849a9}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.note{border-left:4px solid #84adff;background:#f5f8ff;border-radius:8px;padding:10px 12px;color:#344054}
+.param{display:grid;grid-template-columns:1.25fr .42fr 1fr;gap:8px;align-items:end;margin-bottom:8px}.param .meta{font-size:12px;color:var(--muted)}
+@media(max-width:620px){.param{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f8fafc}
+.small{font-size:12px}.hidden{display:none!important}.split{display:flex;gap:8px;align-items:center}.split input{flex:1}
+code{background:#f2f4f7;padding:2px 5px;border-radius:5px}
+footer{max-width:1280px;margin:0 auto 32px;padding:0 22px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px;">
+    <div>
+      <a href="/" style="display:inline-flex;align-items:center;gap:6px;color:#0d9488;text-decoration:none;font-weight:700;font-size:13px;padding:4px 10px;background:#e6f7f5;border-radius:6px;">
+        &larr; Back to Jeff Tarimo Portfolio
+      </a>
+    </div>
+    <div>
+      <span style="font-size:12px;color:#64748b;font-weight:600;">Designed by Jeff Tarimo &bull; Head of Technology</span>
+    </div>
+  </div>
+  <h1>DL/T 645-2007 MQTT Meter Payload Workbench</h1>
+  <div class="sub">Encode meter commands, wrap them as MQTT JSON, and decode MQTT responses, telemetry, and raw 645 frames.</div>
+  <div class="tabs">
+    <button class="tab active" data-tab="encoder">Encoder</button>
+    <button class="tab" data-tab="decoder">Response Decoder</button>
+    <button class="tab" data-tab="telemetry">Telemetry Decoder</button>
+    <button class="tab" data-tab="reference">Protocol Reference</button>
+  </div>
+</div></header>
+
+<main>
+<section id="encoder" class="panel active">
+<div class="grid">
+<div>
+  <div class="card">
+    <h2>1. MQTT / meter settings</h2>
+    <div class="row">
+      <div><label>Meter address</label><input id="meter" value="111111111111" maxlength="12" inputmode="numeric"><div class="hint">12 decimal digits. DL/T 645 transmits address bytes low-byte first.</div></div>
+      <div><label>Message ID</label><div class="split"><input id="msgid" value="" readonly><button type="button" id="newMsgId" class="secondary">New ID</button></div><div class="hint">Automatically generated as a unique 16-digit timestamp-style ID for every encoded command.</div></div>
+      <div><label>Base topic</label><input id="topic" value=""><div class="hint">Default: /v1/device/{meter}; command topic is /cmd, response is /response.</div></div>
+      <div><label>Wake-up FE bytes</label><select id="wake"><option value="4" selected>4 (MQTT / standard)</option><option value="3">3 (extended-document examples)</option><option value="0">0</option></select></div>
+    </div>
+  </div>
+
+  
+<div id="clockCard" class="card hidden">
+<h2>Meter Clock Setting</h2>
+<div class="note">
+Use this section when you want to set the meter's internal date and time. If the meter returns a write exception, check the password authority, password byte order, operator code and operator byte order. 
+Choose the date and time normally; the encoder will automatically create the correct DL/T 645 write payload.
+This is different from tariff time zones, which only control rate switching schedules.
+</div>
+
+<div class="row" style="margin-top:12px">
+<div>
+<label>Meter Date</label>
+<input id="meterDate" type="date">
+<div class="hint">Calendar date to write into the meter clock.</div>
+</div>
+<div>
+<label>Meter Time</label>
+<input id="meterTime" type="time" step="1">
+<div class="hint">Time including seconds.</div>
+</div>
+</div>
+
+<div class="row" style="margin-top:12px">
+<div>
+<label>Time Setting Method</label>
+<select id="clockMode">
+<option value="broadcast">Broadcast time synchronization (C=08)</option>
+<option value="write">Write meter clock data (C=14)</option>
+</select>
+<div class="hint">Broadcast clock correction normally does not require password authentication.</div>
+</div>
+<div>
+<label>Password Authority</label>
+<select id="clockPA">
+<option value="02">02 - Operator write</option>
+<option value="01">01 - Customer/user</option>
+</select>
+</div>
+<div>
+<label>Password</label>
+<input id="clockPassword" value="000000">
+<div class="hint">Enter the 3-byte meter password.</div>
+</div>
+<div>
+<label>Password Byte Order</label>
+<select id="clockPasswordOrder">
+<option value="normal">Normal (12 34 56)</option>
+<option value="reverse">DL/T 645 reverse (56 34 12)</option>
+</select>
+</div>
+</div>
+<div style="margin-top:12px">
+<label>Operator Code</label>
+<select id="clockOperator">
+<option value="11223344">11223344 (Default operator)</option>
+<option value="00000000">00000000</option>
+</select>
+<div class="hint">Operator code order can be reversed automatically during encoding.</div>
+<select id="clockOperatorOrder">
+<option value="normal">Operator normal order</option>
+<option value="reverse">Operator reverse order</option>
+</select>
+</div>
+
+<div style="margin-top:10px">
+<label>Generated clock data</label>
+<div class="out" id="meterClockPreview">Select date and time.</div>
+</div>
+
+<div style="margin-top:12px">
+<label>DL/T645 DATA Preview (before +33H encoding)</label>
+<div class="out" id="clockDataPreview">Select Set Meter Time to view DATA layout.</div>
+<div class="hint">
+This shows the actual DATA field sent inside the DL/T645 write frame before transmission encoding.
+</div>
+</div>
+</div>
+
+<div class="card">
+    <h2>2. Function</h2>
+    <label>Meter function</label>
+    <select id="function">
+      <optgroup label="MQTT shortcuts">
+        <option value="relayon">Relay ON — MQTT literal "relayon"</option>
+        <option value="relayoff">Relay OFF — MQTT literal "relayoff"</option>
+      </optgroup>
+      <optgroup label="DL/T 645 base">
+        <option value="read">Read data identifier — C=11</option>
+        <option value="setClock">Set meter clock — Date & Time</option>
+        <option value="write">Generic write — C=14</option>
+        <option value="relay645">Remote relay control — C=1C</option>
+      </optgroup>
+      <optgroup label="Extended prepaid / multi-tariff">
+        <option value="amountInit">Amount initialization — DI 070103FF, C=03</option>
+        <option value="sale">Electricity sales order — DI 070102FF, C=03</option>
+        <option value="return">Return order — DI 070108FF, C=03</option>
+        <option value="param1">Prepaid/tariff parameters — DI 070104FF, C=03</option>
+        <option value="param2">Time-zone / timetable parameters — DI 070105FF, C=03</option>
+        <option value="aggregate">Read extended 65-byte data block — DI 028011FF, C=11</option>
+      </optgroup>
+    </select>
+    <div id="functionHelp" class="note" style="margin-top:10px"></div><div id="optionExplain" class="optionHelp"></div>
+    <div id="fields" style="margin-top:14px"></div>
+    <div class="actions"><button id="encodeBtn">Encode payload</button><button id="clearBtn" class="secondary">Reset fields</button></div>
+  </div>
+</div>
+
+<div>
+  <div class="card">
+    <h2>Generated MQTT command</h2>
+    <div class="kv"><div class="k">Publish topic</div><div id="cmdTopic" class="v"></div></div>
+    <div class="out" id="mqttOut">Choose a function and click Encode payload.</div>
+    <div class="actions"><button data-copy="mqttOut">Copy MQTT JSON</button><button class="secondary" data-copy="cmdTopic">Copy topic</button></div>
+  </div>
+  <div class="card">
+    <h2>Raw message</h2>
+    <div class="out" id="rawOut"></div>
+    <div class="actions"><button data-copy="rawOut">Copy message</button><button class="secondary" id="decodeGenerated">Decode generated frame</button></div>
+  </div>
+  <div class="card">
+    <h2>Frame details</h2>
+    <div id="frameDetails" class="small"></div>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="decoder" class="panel">
+<div class="grid">
+<div class="card">
+  <h2>Paste response or raw frame</h2>
+  <textarea id="decodeIn" placeholder='Examples:
+{"message":"FEFEFE6811111111111168D101353D16","cmdresult":0}
+
+or:
+FE FE FE FE 68 00 00 12 09 17 20 68 83 ... 16'></textarea>
+  <div class="actions"><button id="decodeBtn">Decode response</button><button id="pasteBtn" class="secondary">Paste from clipboard</button></div>
+  <div class="hint">The decoder strips spaces and FE wake bytes, validates the frame checksum, subtracts 0x33 from every DATA byte, and recognizes supported identifiers.</div>
+</div>
+<div class="card"><h2>Decoded result</h2><div id="decodeOut"></div></div>
+</div>
+</section>
+
+<section id="telemetry" class="panel">
+<div class="grid">
+<div class="card">
+  <h2>Paste periodic MQTT telemetry JSON</h2>
+  <textarea id="telemetryIn" placeholder='{"DataType":"Variable","Device_Number":"111111111111","Time":"2021-08-20 20:30:16","datas":{"Ua":219.9,"Ia":5.001,"Pt":3.2997}}'></textarea>
+  <div class="actions"><button id="telemetryBtn">Decode telemetry</button><button class="secondary" id="telemetryPaste">Paste from clipboard</button></div>
+</div>
+<div class="card"><h2>Telemetry fields</h2><div id="telemetryOut"></div></div>
+</div>
+</section>
+
+
+<section id="reference" class="panel">
+<div class="card"><h2>Supported functions</h2>
+<table><thead><tr><th>Function</th><th>Control / DI</th><th>Input handling</th></tr></thead><tbody>
+<tr><td>Read any data item</td><td>C=11, user DI</td><td>4-byte DI entered as DI3..DI0; encoder transmits DI0..DI3 and adds 33H.</td></tr>
+<tr><td>Generic write</td><td>C=14, user DI</td><td>Password authority + 3 password bytes, 4 operator bytes, raw DATA.</td></tr>
+<tr><td>MQTT relay shortcut</td><td>message=relayon / relayoff</td><td>No 645 frame; sent exactly as documented by the MQTT layer.</td></tr>
+<tr><td>645 relay control</td><td>C=1C</td><td>Password/operator bytes + N1 command + reserved N2 + N3..N8 validity bytes.</td></tr>
+<tr><td>Amount initialization</td><td>C=03, 070103FF</td><td>Operator 11223344, preset amount as 32-bit cents, fixed MAC / purchase-count fields.</td></tr>
+<tr><td>Sales order</td><td>C=03, 070102FF</td><td>Amount as 32-bit cents; order no. exactly 8 bytes; meter/table number 6 BCD bytes.</td></tr>
+<tr><td>Return order</td><td>C=03, 070108FF</td><td>Same field structure as sales order, per document.</td></tr>
+<tr><td>Parameter 1</td><td>C=03, 070104FF</td><td>All documented fixed-width fields are exposed. Because the document does not state decimal scaling for every parameter, exact raw unshifted bytes are accepted per field.</td></tr>
+<tr><td>Parameter 2</td><td>C=03, 070105FF</td><td>116-byte DATA builder matching the supplied example (L=0x74): DI + operator + four 3-byte zone entries + four schedules of 8×3-byte sessions.</td></tr>
+<tr><td>Extended meter snapshot</td><td>C=11, 028011FF</td><td>Decodes the documented 65-byte aggregate response and status word.</td></tr>
+</tbody></table></div>
+
+<div class="card"><h2>Important encoding rules</h2>
+<div class="note">645 DATA bytes are encoded by adding <b>0x33</b> before transmission and decoded by subtracting <b>0x33</b>. The checksum is the modulo-256 sum from the first <b>68</b> through the final DATA byte. The 6-byte address is BCD and transmitted low-byte first.</div>
+</div>
+</section>
+</main>
+
+<footer>This tool follows the supplied meter-development and MQTT protocol documents. Where the documents do not define a numeric scale or semantic format, the UI intentionally uses exact-width raw bytes instead of guessing.</footer>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const cleanHex=s=>(s||"").replace(/0x/gi,"").replace(/[^0-9a-f]/gi,"").toUpperCase();
+const bytes=s=>{const h=cleanHex(s);if(h.length%2)throw Error("Hex must contain complete bytes.");return (h.match(/../g)||[]).map(x=>parseInt(x,16));};
+const hex=a=>a.map(x=>x.toString(16).padStart(2,"0").toUpperCase()).join("");
+const spaced=a=>a.map(x=>x.toString(16).padStart(2,"0").toUpperCase()).join(" ");
+const add33=a=>a.map(x=>(x+0x33)&255), sub33=a=>a.map(x=>(x-0x33+256)&255);
+const checksum=a=>a.reduce((s,x)=>(s+x)&255,0);
+const reverse=a=>[...a].reverse();
+function assert(c,m){if(!c)throw Error(m)}
+function padDigits(v,n){v=String(v??"").replace(/\D/g,"");assert(v.length<=n,`Must be at most ${n} digits.`);return v.padStart(n,"0")}
+function bcdAddress(addr){let d=padDigits(addr,12);assert(/^\d{12}$/.test(d),"Meter address must be 12 digits.");return reverse(d.match(/../g).map(x=>parseInt(x,16)))}
+function addressText(a){return reverse(a).map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase()}
+function diBytes(di){let h=cleanHex(di);assert(h.length===8,"Data identifier must be exactly 4 bytes (8 hex digits), written DI3DI2DI1DI0.");return reverse(bytes(h))}
+function u32le(v){assert(Number.isInteger(v)&&v>=0&&v<=0xFFFFFFFF,"32-bit value out of range.");return [v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255]}
+function readU32LE(a){return ((a[0])+(a[1]<<8)+(a[2]<<16)+(a[3]*0x1000000))>>>0}
+function moneyLE(v){let n=Math.round(Number(v)*100);assert(Number.isFinite(n)&&n>=0&&n<=0xFFFFFFFF,"Amount must fit unsigned 32-bit cents.");return u32le(n)}
+function exactBytes(v,n,name){let a=bytes(v);assert(a.length===n,`${name} must be exactly ${n} byte${n===1?"":"s"} (${n*2} hex digits).`);return a}
+function opCode(v="11223344"){return reverse(exactBytes(v,4,"Operator code"))}
+function order8(v){let h=cleanHex(v);assert(h.length===16,"Order number must be exactly 8 bytes (16 hex digits).");return bytes(h)}
+function makeFrame(addr,control,data,wake=4){
+  let core=[0x68,...bcdAddress(addr),0x68,control,data.length,...add33(data)];
+  return [...Array(+wake).fill(0xFE),...core,checksum(core),0x16]
+}
+function mqttWrap(message){
+  const meter=$("#meter").value.trim(), id=genId();
+  $("#msgid").value=id;
+  return {meteraddress:meter,messageID:id,message}
+}
+function genId(){
+  const d=new Date(), p=(n,w=2)=>String(n).padStart(w,"0");
+  const hundredths=Math.floor(d.getMilliseconds()/10);
+  return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}${p(hundredths)}`;
+}
+function baseTopic(){let t=$("#topic").value.trim();return t||`/v1/device/${$("#meter").value.trim()}`}
+function fld(id,label,type="text",value="",hint=""){
+ return `<div><label for="${id}">${label}</label><input id="${id}" type="${type}" value="${value}">${hint?`<div class="hint">${hint}</div>`:""}</div>`
+}
+function rawParam(id,name,n,def="00".repeat(n),hint=""){
+ const presets = {
+   1:["00","01","02","03","04","05","06","07","08","09","0A","0B","0C","0D","0E","0F"],
+   2:["0000","0001","0002","0003","0032","0064","0099","0100"],
+   3:["000000","000001","000100","010000","001000","FFFFFF"],
+   4:["00000000","00000001","00000010","00010000","11223344","FFFFFFFF"],
+   5:["0000000000","0102030405","1122334455"],
+   6:["000000000000","010203040506","FFFFFFFFFFFF"]
+ };
+ const values=[def,...(presets[n]||[])].filter((v,i,a)=>a.indexOf(v)===i);
+ return `<div class="param"><div><label>${name}</label><div class="meta">${hint||"Select a predefined value"}</div></div><div class="meta">${n} byte${n>1?"s":""}</div><select id="${id}">${values.map(v=>`<option value="${v}" ${v===def?"selected":""}>${v}</option>`).join("")}</select></div>`
+}
+const p1=[
+["rateSwitch","Rate switching time",5],["stepSwitch","Step switching time",5],["zoneSwitch","Two-set time-zone switching time",5],["tableSwitch","Two-set timetable switching time",5],
+["zoneCount","Number of time zones (≤2)",1,"01"],["tableCount","Number of time tables (≤2)",1,"01"],["sessionCount","Number of sessions (≤8)",1,"01"],["rateCount","Number of rates (≤4)",1,"01"],["stepCount","Number of steps (≤3)",1,"01"],
+["voltageMul","Voltage multiplier",3],["currentRatio","Current ratio",3],["alarm1","Alarm amount 1",4],["alarm2","Alarm amount 2",4],["overdraft","Overdraft limit",4],["hoarding","Hoarding limit",4],["closeLimit","Allowable closing amount limit",4],["maxLoad","Maximum load power limit",3],["loadDelay","Load power delay",1],
+...Array.from({length:4},(_,i)=>[`rateA${i+1}`,`First set rate ${i+1} electricity price`,4]),
+...Array.from({length:4},(_,i)=>[`rateB${i+1}`,`Second set rate ${i+1} electricity price`,4]),
+...Array.from({length:3},(_,i)=>[`stepA${i+1}`,`First set step value ${i+1}`,4]),
+...Array.from({length:4},(_,i)=>[`ladderA${i+1}`,`First set ladder tariff ${i+1}`,4]),
+...Array.from({length:3},(_,i)=>[`stepB${i+1}`,`Second set step value ${i+1}`,4]),
+...Array.from({length:4},(_,i)=>[`ladderB${i+1}`,`Second set ladder tariff ${i+1}`,4])
+];
+const HELP={
+relayon:"Uses the MQTT-layer shortcut documented by the meter: the message field is the literal string “relayon”. This closes/energizes the relay and does not create a DL/T 645 frame.",
+relayoff:"Uses the MQTT-layer shortcut documented by the meter: the message field is the literal string “relayoff”. This opens/trips the relay and does not create a DL/T 645 frame.",
+read:"Builds a standard DL/T 645 read-data frame (C=11). Use this when requesting meter information such as energy, voltage, current, power or status values. The DI identifies the item to read.",
+setClock:"Sets the meter internal real-time clock. Choose date and time and the encoder automatically builds the DL/T 645 write command.",
+write:"Builds a standard DL/T 645 write frame (C=14). Used to modify programmable meter settings. Requires authorization fields and the new DATA value.",
+relay645:"Builds a raw DL/T 645 remote relay frame (C=1C). The supplied English extension says N1=1A trip and N1=1B close; the MQTT protocol PDF shows 1A trip / 1C close. Both choices are exposed.",
+amountInit:"Prepaid amount initialization. Use after setting/resetting the wallet amount. The amount entered is converted into the meter currency format used by the protocol.",
+sale:"Electricity purchase/sales order. Creates a prepaid purchase transaction containing amount, order number and meter information.  Amount is integer cents. Order number is exactly 8 raw bytes and the table number is the 6-byte meter address. Note: the document's stated field sizes total 34 bytes, although its printed example shows L=0x1E (30); this tool follows the stated field structure rather than silently dropping a field.",
+return:"Extended return order DI 070108FF. The document says the other function details are the same as the electricity sales instruction.",
+param1:"Prepaid tariff and meter configuration. Contains switching times, tariff counts, alarms, limits and pricing parameters. Each option controls a specific meter operating rule.",
+param2:"Time-zone and timetable configuration. Used to define when different tariff periods or schedules become active.  Configure 4 time-zone entries (2 per set) and 56 schedule entries (14 each across four schedules). Each entry is exactly 3 bytes.",
+aggregate:"Reads the documented aggregate 65-byte snapshot with DI 028011FF."
+};
+
+function getOptionExplain(f){
+ const x={
+ relayon:"Relay ON: sends the MQTT relay close command. Use when restoring power.",
+ relayoff:"Relay OFF: sends the MQTT relay open command. Use when disconnecting supply.",
+ read:"Read data: retrieves information from the meter. Example: total kWh, voltage, current, frequency.",
+ write:"Write data: changes a meter setting. Normally restricted to authorized users.",
+ relay645:"DL/T 645 relay control: low-level protocol command including password/operator information.",
+ amountInit:"Amount initialization: loads or resets prepaid wallet balance before electricity purchase.",
+ sale:"Sales order: records a customer electricity purchase transaction.",
+ return:"Return order: reverses or returns a previous electricity purchase transaction.",
+ param1:"Parameter 1: tariff rules, alarms, limits, multipliers and pricing configuration.",
+ param2:"Parameter 2: time zones and timetable schedules that determine tariff periods.",
+ aggregate:"Aggregate snapshot: reads a combined meter status block containing measurements and status."
+ };
+ return x[f]||"";
+}
+
+function renderFields(){
+ const f=$("#function").value; $("#functionHelp").innerHTML=HELP[f]||""; $("#optionExplain").innerHTML=getOptionExplain(f); let h="";
+ if(f==="read") h=fld("di","Data identifier (DI3DI2DI1DI0)","text","00010000","Example: 00010000 = current positive active total energy.");
+ if(f==="write") h=`<div class="row">${fld("di","Data identifier","text","04000102")}${fld("pa","Password authority byte","text","02")}${fld("password","Password bytes P0P1P2","text","000000")}${fld("operator","Operator code (display order)","text","11223344")}</div>${fld("writeData","DATA bytes (unshifted hex)","text","","Exact bytes after DI/password/operator.")}`;
+ if(f==="relay645") h=`<div class="row">${fld("pa","Password authority byte","text","02")}${fld("password","Password P0P1P2","text","000000")}${fld("operatorRaw","Operator C0..C3 raw bytes","text","00000000")}</div><div class="row"><div><label>Relay command byte N1</label><select id="relayN1"><option value="1A">1A — Trip / open</option><option value="1B">1B — Close (English extension)</option><option value="1C">1C — Close (MQTT protocol PDF)</option></select></div>${fld("relayN2","Reserved N2","text","00")}</div><div><label>N3..N8 validity preset</label><select id="relayExpiry"><option value="000000000000">No expiry</option><option value="010000000000">1 day</option><option value="000001000000">1 hour</option><option value="123456789012">Protocol example</option></select><div class="hint">6 validity bytes ssmmhhDDMMYY format when used.</div></div>`;
+ if(f==="amountInit") h=`<div class="row">${fld("operator","Operator code","text","11223344")}${fld("amount","Preset amount","number","0.00","Currency amount; 2 decimal places.")}</div>`;
+ if(f==="sale"||f==="return") h=`<div class="row">${fld("operator","Operator code","text","11223344")}${fld("amount","Electricity purchase / return amount","number","0.00","Converted to unsigned cents.")}${fld("order","Order number (8 bytes hex)","text","0000000000000001","Exactly 16 hex digits.")}</div>`;
+ if(f==="param1") h=`<div class="row">${fld("operator","Operator code","text","11223344","The extension examples place the 4-byte operator immediately after the DI.")}</div><div class="note" style="margin-top:10px">The document labels this data field as BCD but does not specify decimal-point scaling for all values. To avoid silently inventing scales, each input below is exact-width <b>unshifted raw hex</b>.</div><div style="margin-top:12px">${p1.map(x=>rawParam("p1_"+x[0],x[1],x[2],x[3]||"00".repeat(x[2]))).join("")}</div>`;
+ if(f==="param2"){
+   let z=Array.from({length:4},(_,i)=>rawParam(`zone${i}`,`${i<2?"First":"Second"} set time-zone entry ${(i%2)+1}`,3,"000000","3 bytes: day-table number + day + month")).join("");
+   let groups=["First set — Day 1","First set — Day 2","Second set — Day 1","Second set — Day 2"];
+   let ss=groups.map((g,gi)=>`<h3>${g}</h3><div class="hint">8 sessions × 3 bytes. The command example has L=0x74 (116 bytes total DATA); after 4-byte DI + 4-byte operator + 12 zone bytes, this leaves 96 bytes = four schedules × 8 sessions × 3 bytes.</div>`+
+     Array.from({length:8},(_,i)=>rawParam(`sch_${gi}_${i}`,`Session ${i+1}`,3,"000000","rate + minute + hour")).join("")).join("");
+   h=`<div class="row">${fld("operator","Operator code","text","11223344","The example places operator bytes after DI.")}</div><div class="note" style="margin-top:10px">The translated table text says “14 groups,” but that conflicts with both the earlier “number of sessions ≤8” parameter and the supplied Parameter-2 example whose DATA length is <b>0x74 = 116 bytes</b>. This builder uses the internally consistent 8-session layout: DI 4 + operator 4 + zone entries 12 + schedules 96 = 116 bytes.</div><h3>Time-zone table entries</h3>${z}${ss}`;
+ }
+ $("#fields").innerHTML=h;
+}
+
+function updateClockDataPreview(){
+ const box=$("#clockDataPreview");
+ if(!box || $("#function").value!=="setClock") return;
+
+ const d=$("#meterDate").value;
+ const t=$("#meterTime").value;
+ if(!d || !t){
+   box.textContent="Select date and time.";
+   return;
+ }
+
+ const parts=d.split("-");
+ const tm=t.split(":");
+ const bcd=x=>((Math.floor(x/10)<<4)|(x%10));
+ const dt=new Date(Date.UTC(Number(parts[0]),Number(parts[1])-1,Number(parts[2])));
+
+ const di=[0x04,0x00,0x01,0x01];
+ let password=exactBytes($("#clockPassword").value||"000000",3,"Password");
+ if($("#clockPasswordOrder").value==="reverse") password.reverse();
+
+ let operator=exactBytes($("#clockOperator").value||"11223344",4,"Operator");
+ if($("#clockOperatorOrder").value==="reverse") operator.reverse();
+
+ const time=[
+   bcd(Number(parts[0])%100),
+   bcd(Number(parts[1])),
+   bcd(Number(parts[2])),
+   bcd(dt.getUTCDay()),
+   bcd(Number(tm[0])),
+   bcd(Number(tm[1])),
+   bcd(Number(tm[2]||0))
+ ];
+
+ box.textContent =
+ `DI:\n${spaced(di)}\n\n`+
+ `Authority:\n${$("#clockPA").value}\n\n`+
+ `Password:\n${spaced(password)}\n\n`+
+ `Operator:\n${spaced(operator)}\n\n`+
+ `Time:\n${spaced(time)}`;
+}
+
+function commandData(f){
+ if(f==="read") return {control:0x11,data:diBytes($("#di").value)};
+ if(f==="aggregate") return {control:0x11,data:diBytes("028011FF")};
+ if(f==="setClock"){
+   const d=$("#meterDate").value;
+   const t=$("#meterTime").value;
+   assert(d && t,"Select both meter date and time.");
+
+   const parts=d.split("-");
+   const tm=t.split(":");
+   const bcd=x=>((Math.floor(x/10)<<4)|(x%10));
+   const dt=new Date(Date.UTC(Number(parts[0]),Number(parts[1])-1,Number(parts[2])));
+
+   const clockBytes=[
+     bcd(Number(parts[0])%100),
+     bcd(Number(parts[1])),
+     bcd(Number(parts[2])),
+     bcd(dt.getUTCDay()),
+     bcd(Number(tm[0])),
+     bcd(Number(tm[1])),
+     bcd(Number(tm[2]||0))
+   ];
+
+   if($("#clockMode").value==="broadcast"){
+      return {control:0x08,data:clockBytes,broadcast:true};
+   }
+
+   let password=exactBytes($("#clockPassword").value,3,"Password");
+   if($("#clockPasswordOrder").value==="reverse") password.reverse();
+
+   let operator=exactBytes($("#clockOperator").value,4,"Operator");
+   if($("#clockOperatorOrder").value==="reverse") operator.reverse();
+
+   return {
+     control:0x14,
+     data:[
+       ...bytes("04000101"),
+       ...exactBytes($("#clockPA").value,1,"Password authority"),
+       ...password,
+       ...operator,
+       ...clockBytes
+     ]
+   };
+ }
+ if(f==="write"){
+   let pa=exactBytes($("#pa").value,1,"PA"), pw=exactBytes($("#password").value,3,"Password"), op=opCode($("#operator").value), d=bytes($("#writeData").value);
+   return {control:0x14,data:[...diBytes($("#di").value),...pa,...pw,...op,...d]};
+ }
+ if(f==="relay645"){
+   let pa=exactBytes($("#pa").value,1,"PA"),pw=exactBytes($("#password").value,3,"Password"),op=exactBytes($("#operatorRaw").value,4,"Operator"),n1=exactBytes($("#relayN1").value,1,"N1"),n2=exactBytes($("#relayN2").value,1,"N2"),exp=exactBytes($("#relayExpiry").value,6,"N3..N8");
+   return {control:0x1C,data:[...pa,...pw,...op,...n1,...n2,...exp]};
+ }
+ if(f==="amountInit") return {control:0x03,data:[...diBytes("070103FF"),...opCode($("#operator").value),...moneyLE($("#amount").value),...Array(4).fill(0),...Array(4).fill(0),...Array(4).fill(0)]};
+ if(f==="sale"||f==="return"){
+   let di=f==="sale"?"070102FF":"070108FF";
+   return {control:0x03,data:[...diBytes(di),...opCode($("#operator").value),...moneyLE($("#amount").value),...order8($("#order").value),...Array(4).fill(0),...bcdAddress($("#meter").value),...Array(4).fill(0)]};
+ }
+ if(f==="param1"){
+   let data=[...diBytes("070104FF"),...opCode($("#operator").value)];
+   for(let [id,name,n] of p1)data.push(...exactBytes($("#p1_"+id).value,n,name));
+   assert(data.length===151,"Parameter 1 DATA must be 151 bytes (0x97), matching the document example.");
+   return {control:0x03,data};
+ }
+ if(f==="param2"){
+   let data=[...diBytes("070105FF"),...opCode($("#operator").value)];
+   for(let i=0;i<4;i++)data.push(...exactBytes($("#zone"+i).value,3,`Time-zone entry ${i+1}`));
+   for(let g=0;g<4;g++)for(let i=0;i<8;i++)data.push(...exactBytes($(`#sch_${g}_${i}`).value,3,`Schedule ${g+1}, session ${i+1}`));
+   assert(data.length===116,"Parameter 2 DATA must be 116 bytes (0x74), matching the document example.");
+   return {control:0x03,data};
+ }
+ throw Error("Unsupported function");
+}
+function encode(){
+ try{
+  let f=$("#function").value,msg,det="";
+  assert(/^\d{1,12}$/.test($("#meter").value.trim()),"Meter address must contain only decimal digits (up to 12; high digits are zero padded).");
+  if(f==="relayon"||f==="relayoff"){msg=f;det=`MQTT literal relay shortcut — no DL/T 645 frame is generated.`}
+  else{
+    let cmd=commandData(f); 
+    let {control,data}=cmd; assert(data.length<=255,"DATA is too long for a one-byte frame length.");
+    let fr=makeFrame(cmd.broadcast?"999999999999":$("#meter").value.trim(),control,data,+$("#wake").value); msg=hex(fr);
+    let start=fr.findIndex(x=>x===0x68),core=fr.slice(start,-2);
+    det=`Control: 0x${control.toString(16).padStart(2,"0").toUpperCase()}
+Unshifted DATA (${data.length} bytes): ${spaced(data)}
+Transmitted DATA (+33H): ${spaced(add33(data))}
+Checksum CS: 0x${fr[fr.length-2].toString(16).padStart(2,"0").toUpperCase()}
+Frame bytes: ${fr.length}`;
+  }
+  const m=mqttWrap(msg), topic=baseTopic()+"/cmd";
+  $("#cmdTopic").textContent=topic;$("#mqttOut").textContent=JSON.stringify(m,null,2);$("#rawOut").textContent=msg;$("#frameDetails").textContent=det;
+ }catch(e){$("#mqttOut").textContent="ERROR: "+e.message;$("#rawOut").textContent="";$("#frameDetails").textContent=""}
+}
+function stripWake(a){while(a[0]===0xFE)a.shift();return a}
+const errBits={1:"Other / bit 0",2:"Other / bit 1",4:"Other / bit 2",8:"Other / bit 3"};
+const saleErrors={1:"Table ID error",2:"Incorrect power purchase times",4:"Power purchase excess hoarding",8:"Illegal data"};
+function bcdLE(a,dec=0){
+ let s=reverse(a).map(x=>x.toString(16).padStart(2,"0")).join("");
+ if(!/^\d+$/.test(s))return null;
+ if(dec){s=s.padStart(dec+1,"0");return Number(s.slice(0,-dec)+"."+s.slice(-dec))}
+ return Number(s)
+}
+function decodeStatus(v){
+ let names={15:"Power retention",13:"Current ladder price set 2",12:"Current ladder-price power set 2",9:"Power exceeds limit",8:"Relay / trip status",5:"Current time-zone set 2",4:"Current timetable set 2",2:"Overdraft alarm",1:"Secondary amount alarm",0:"First-level amount alarm"};
+ return Object.entries(names).map(([b,n])=>({bit:+b,name:n,set:!!(v&(1<<b))}));
+}
+function parseAggregate(data){
+ let p=4, out=[]; const take=n=>data.slice(p,p+=n);
+ function b(name,n,dec,unit){let a=take(n),v=bcdLE(a,dec);out.push([name,v===null?spaced(a):v+(unit?` ${unit}`:"")])}
+ b("Remaining amount",4,2,""); b("Overdraft amount",4,2,"");
+ b("Voltage A",2,1,"V");b("Voltage B",2,1,"V");b("Voltage C",2,1,"V");
+ b("Current A",3,3,"A");b("Current B",3,3,"A");b("Current C",3,3,"A");
+ b("Total active power",3,4,"kW");b("Active power A",3,4,"kW");b("Active power B",3,4,"kW");b("Active power C",3,4,"kW");
+ b("Total power factor",2,3,"");b("Power factor A",2,3,"");b("Power factor B",2,3,"");b("Power factor C",2,3,"");
+ b("Total electricity",4,2,"kWh");b("Total power consumption",4,2,"kWh");b("Peak total electricity",4,2,"kWh");b("Total electricity consumption",4,2,"kWh");b("Valley electricity",4,2,"kWh");
+ let sw=take(2); if(sw.length===2){let v=sw[0]|sw[1]<<8;out.push(["Run status word",`0x${v.toString(16).padStart(4,"0").toUpperCase()}`]);out.status=decodeStatus(v)}
+ out.remaining=data.slice(p);return out
+}
+function parseSaleResponse(data,di){
+ let p=4,take=n=>data.slice(p,p+=n),out=[];
+ let order=take(8);out.push(["Order number raw",spaced(order)]);
+ let total=take(4);out.push(["Total electricity consumption",bcdLE(total,2)??spaced(total)]);
+ let cnt=take(4);out.push(["Number of power purchases (raw)",spaced(cnt)]);
+ let pur=take(4);out.push(["Electricity purchase amount (raw / uint32 cents)",`${spaced(pur)} / ${(readU32LE(pur)/100).toFixed(2)}`]);
+ let rem=take(4);out.push(["Remaining wallet amount (raw)",spaced(rem)]);
+ out.push(["Reserve",spaced(take(4))]);
+ if(data.length>p){let e=data[p];out.push(["Sales error code",`0x${e.toString(16).padStart(2,"0")} — ${saleErrors[e]||"Unknown / combined error"}`])}
+ return out
+}
+function parseFrame(raw){
+ let a=stripWake(bytes(raw));assert(a.length>=12,"Frame too short.");assert(a[0]===0x68,"Missing first 68H frame start.");assert(a[7]===0x68,"Missing second 68H frame start.");
+ let L=a[9],expected=12+L;assert(a.length>=expected,`Incomplete frame: length byte says ${L} DATA bytes; need ${expected} bytes after wake prefix.`);
+ let fr=a.slice(0,expected), end=fr[fr.length-1],cs=fr[fr.length-2], calc=checksum(fr.slice(0,-2));
+ let enc=fr.slice(10,10+L), data=sub33(enc),control=fr[8],addr=addressText(fr.slice(1,7));
+ let di=null;if(data.length>=4)di=hex(reverse(data.slice(0,4)));
+ let parsed=[];
+ if(["070102FF","070103FF","070108FF"].includes(di)&&data.length>=32) parsed=parseSaleResponse(data,di);
+ else if(di==="028011FF"&&data.length>=6) parsed=parseAggregate(data);
+ return {fr,L,end,cs,calc,valid:cs===calc&&end===0x16,control,addr,enc,data,di,parsed}
+}
+function kv(k,v,cls=""){return `<div class="kv"><div class="k">${k}</div><div class="v ${cls}">${esc(String(v))}</div></div>`}
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function decode(){
+ let raw=$("#decodeIn").value.trim(),outer=null;
+ try{
+  if(raw.startsWith("{")){outer=JSON.parse(raw);raw=outer.message;assert(typeof raw==="string","JSON does not contain a string message field.");}
+  if(raw==="relayon"||raw==="relayoff"){ $("#decodeOut").innerHTML=kv("MQTT message",raw)+kv("Meaning",raw==="relayon"?"Relay ON / close":"Relay OFF / trip","ok");return}
+  let d=parseFrame(raw),html="";
+  if(outer){html+=kv("cmdresult",`${outer.cmdresult} — ${outer.cmdresult===0?"meter executed/accepted command frame":"execution failed"}`,outer.cmdresult===0?"ok":"bad");if(outer.messageID)html+=kv("messageID",outer.messageID);if(outer.meteraddress)html+=kv("meteraddress",outer.meteraddress)}
+  html+=kv("Checksum",d.valid?`VALID — CS ${d.cs.toString(16).padStart(2,"0").toUpperCase()}`:`INVALID — got ${d.cs.toString(16).padStart(2,"0").toUpperCase()}, calculated ${d.calc.toString(16).padStart(2,"0").toUpperCase()}`,d.valid?"ok":"bad");
+  html+=kv("Meter address",d.addr)+kv("Control code","0x"+d.control.toString(16).padStart(2,"0").toUpperCase())+kv("DATA length",d.L+" bytes")+kv("Transmitted DATA (+33H)",spaced(d.enc))+kv("Decoded DATA",spaced(d.data));
+  if(d.control===0xD1||d.control===0xD4||d.control===0xDC){
+    let e=d.data[0]??0;html+=kv("Exception response",`ERR 0x${e.toString(16).padStart(2,"0").toUpperCase()}`,"bad");
+  }
+  if(d.di)html+=kv("Data identifier (DI3..DI0)",d.di);
+  if(d.parsed?.length){html+=`<h3>Decoded payload</h3>`+d.parsed.map(x=>kv(x[0],x[1])).join("");if(d.parsed.status)html+=`<h3>Status word</h3>`+d.parsed.status.map(x=>kv(`Bit ${x.bit} — ${x.name}`,x.set?"1 / set":"0 / clear",x.set?"warn":"")).join("")}
+  $("#decodeOut").innerHTML=html;
+ }catch(e){$("#decodeOut").innerHTML=`<div class="bad"><b>Decode error:</b> ${esc(e.message)}</div>`}
+}
+const telemetryMap={
+Ua:["A-phase voltage","V"],Ub:["B-phase voltage","V"],Uc:["C-phase voltage","V"],Ia:["A-phase current","A"],Ib:["B-phase current","A"],Ic:["C-phase current","A"],
+Pt:["Total active power","kW"],Pa:["A-phase active power","kW"],Pb:["B-phase active power","kW"],Pc:["C-phase active power","kW"],
+Qt:["Total reactive power","kVar"],Qa:["A-phase reactive power","kVar"],Qb:["B-phase reactive power","kVar"],Qc:["C-phase reactive power","kVar"],
+St:["Total apparent power","kVA"],Sa:["A-phase apparent power","kVA"],Sb:["B-phase apparent power","kVA"],Sc:["C-phase apparent power","kVA"],
+The:["Total power factor",""],TheA:["A-phase power factor",""],TheB:["B-phase power factor",""],TheC:["C-phase power factor",""],Hz:["Frequency","Hz"],
+kwhImp:["Forward active energy","kWh"],kWhImp:["Forward active energy","kWh"],kwhImpTariff1:["Forward active energy tariff 1","kWh"],kWhImpTariff1:["Forward active energy tariff 1","kWh"],
+kwhImpTariff2:["Forward active energy tariff 2","kWh"],kwhImpTariff3:["Forward active energy tariff 3","kWh"],kwhImpTariff4:["Forward active energy tariff 4","kWh"],
+kwhExp:["Reverse active energy","kWh"],kWhExp:["Reverse active energy","kWh"],kWhExpTariff1:["Reverse active energy tariff 1","kWh"],kwhExpTariff1:["Reverse active energy tariff 1","kWh"],
+kwhExpTariff2:["Reverse active energy tariff 2","kWh"],kwhExpTariff3:["Reverse active energy tariff 3","kWh"],kwhExpTariff4:["Reverse active energy tariff 4","kWh"],
+PeakIa:["Peak current (previous 1 min max)","A"],ContinuousIa:["Continuous current (previous 5 min avg)","A"],PeakUa:["Peak voltage (previous 1 min max)","V"]
+};
+function decodeTelemetry(){
+ try{
+  let j=JSON.parse($("#telemetryIn").value),h="";
+  h+=kv("DataType",j.DataType??"")+kv("Device_Number",j.Device_Number??"")+kv("Time",j.Time??"");
+  let d=j.datas||{};h+=`<h3>Measurements</h3>`;
+  for(let [key,val] of Object.entries(d)){let m=telemetryMap[key]||[key,""];h+=kv(`${m[0]} (${key})`,`${val}${m[1]?" "+m[1]:""}`)}
+  $("#telemetryOut").innerHTML=h;
+ }catch(e){$("#telemetryOut").innerHTML=`<div class="bad"><b>JSON error:</b> ${esc(e.message)}</div>`}
+}
+async function copyText(id){let t=$("#"+id).textContent;await navigator.clipboard.writeText(t);let el=document.querySelector(`[data-copy="${id}"]`);if(el){let old=el.textContent;el.textContent="Copied!";setTimeout(()=>el.textContent=old,1000)}}
+$$(".tab").forEach(b=>b.onclick=()=>{$$(".tab").forEach(x=>x.classList.remove("active"));$$(".panel").forEach(x=>x.classList.remove("active"));b.classList.add("active");$("#"+b.dataset.tab).classList.add("active")});
+$("#function").onchange=()=>{renderFields();updateClockVisibility();updateClockDataPreview();};
+$("#meterDate")?.addEventListener("change",updateClockDataPreview);
+$("#meterTime")?.addEventListener("change",updateClockDataPreview);
+$("#clockPA")?.addEventListener("change",updateClockDataPreview);
+$("#clockPassword")?.addEventListener("input",updateClockDataPreview);
+$("#clockOperator")?.addEventListener("change",updateClockDataPreview);
+$("#clockPasswordOrder")?.addEventListener("change",updateClockDataPreview);
+$("#clockOperatorOrder")?.addEventListener("change",updateClockDataPreview);
+$("#encodeBtn").onclick=encode;$("#clearBtn").onclick=renderFields;
+$("#newMsgId").onclick=()=>{$("#msgid").value=genId()};
+$$("[data-copy]").forEach(b=>b.onclick=()=>copyText(b.dataset.copy));
+$("#decodeBtn").onclick=decode;$("#telemetryBtn").onclick=decodeTelemetry;
+$("#pasteBtn").onclick=async()=>{$("#decodeIn").value=await navigator.clipboard.readText()};
+$("#telemetryPaste").onclick=async()=>{$("#telemetryIn").value=await navigator.clipboard.readText()};
+$("#decodeGenerated").onclick=()=>{let r=$("#rawOut").textContent;if(!r)return;$("#decodeIn").value=r;document.querySelector('[data-tab="decoder"]').click();decode()};
+$("#meter").addEventListener("input",()=>{if(!$("#topic").value.trim())$("#cmdTopic").textContent=`/v1/device/${$("#meter").value}/cmd`});
+updateClockVisibility();renderFields();updateClockDataPreview();$("#msgid").value=genId();$("#cmdTopic").textContent=baseTopic()+"/cmd";
+
+function updateClockVisibility(){
+ const f=document.getElementById("function");
+ const card=document.getElementById("clockCard");
+ if(card && f) card.classList.toggle("hidden", f.value!=="setClock");
+}
+document.getElementById("function")?.addEventListener("change",updateClockVisibility);
+
+</script>
+
+<script>
+(function(){
+function toBCD(v){return ((Math.floor(v/10)<<4)|(v%10));}
+
+function generateMeterClock(){
+ const d=document.getElementById("clockDate").value;
+ const t=document.getElementById("clockTime").value;
+ if(!d||!t){document.getElementById("clockBytes").textContent="Please select date and time.";return;}
+
+ const date=d.split("-");
+ const time=t.split(":");
+
+ // YY MM DD WW hh mm ss (BCD representation)
+ const dt=new Date(Date.UTC(Number(date[0]),Number(date[1])-1,Number(date[2])));
+ const weekday=dt.getUTCDay();
+
+ const bytes=[
+   toBCD(Number(date[0])%100),
+   toBCD(Number(date[1])),
+   toBCD(Number(date[2])),
+   toBCD(weekday),
+   toBCD(Number(time[0])),
+   toBCD(Number(time[1])),
+   toBCD(Number(time[2]||0))
+ ];
+
+ document.getElementById("clockBytes").textContent =
+ bytes.map(x=>x.toString(16).padStart(2,"0").toUpperCase()).join(" ");
+
+ document.getElementById("clockExplanation").innerHTML =
+ "Meter clock selected: <b>"+d+" "+t+
+ "</b><br>The generated bytes represent year/month/day/week/hour/minute/second in BCD format.";
+}
+
+document.getElementById("generateClock")?.addEventListener("click",generateMeterClock);
+
+document.getElementById("copyClock")?.addEventListener("click",async()=>{
+ const txt=document.getElementById("clockBytes").textContent;
+ if(txt && navigator.clipboard){await navigator.clipboard.writeText(txt);}
+});
+
+const today=new Date();
+const cd=document.getElementById("clockDate");
+const ct=document.getElementById("clockTime");
+if(cd) cd.value=today.toISOString().slice(0,10);
+if(ct) ct.value="00:00:00";
+
+})();
+
+(function(){
+ const d=document.getElementById("meterDate");
+ const t=document.getElementById("meterTime");
+ const p=document.getElementById("meterClockPreview");
+ function update(){
+   if(!d||!t||!p)return;
+   if(!d.value||!t.value){p.textContent="Select date and time.";return;}
+   const x=d.value.split("-");
+   const y=t.value.split(":");
+   p.textContent=`Clock DATA preview: Date ${x[2]}/${x[1]}/${x[0]} Time ${y.join(":")}`;
+ }
+ d?.addEventListener("change",update);
+ t?.addEventListener("change",update);
+ const now=new Date();
+ if(d)d.value=now.toISOString().slice(0,10);
+ if(t)t.value="00:00:00";
+ update();
+})();
+</script>
+
+
+
+</body>
+</html>

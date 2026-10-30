@@ -517,6 +517,27 @@ def home(request):
 
     portfolio = [
         {
+            'id': 'dlt-workbench',
+            'title': 'DL/T 645-2007 MQTT Smart Meter Encoder & Decoder Workbench',
+            'category': 'IoT & Smart Metering Protocol Tool',
+            'url': '/tools/dlt-encoder-decoder/',
+            'url_display': 'jefftarimo.co.ke/tools/dlt-encoder-decoder/',
+            'description': (
+                'Industrial-grade DL/T 645-2007 telemetry & command engineering workbench for smart energy meters. '
+                'Enables bidirectional translation between raw serial RS485 / optical frames (BCD + 0x33 byte offset, modulo-256 CS) '
+                'and structured MQTT JSON command and response packets for edge gateways and IoT cloud platforms.'
+            ),
+            'features': [
+                'Bidirectional Encoding & Decoding: Generates raw 645 frames with automatic 0xFE preamble bytes, control codes (0x11 Read, 0x14 Write, 0x08 Broadcast), and reverse BCD addresses',
+                'MQTT Payload Synthesizer: Packages hex frames into structured JSON envelopes (`/cmd` & `/response`) with automated 16-digit unique message IDs, timestamps, and QoS settings',
+                'Comprehensive DI Catalog: Built-in decoding presets for active/reactive energy, tariff schedules, voltage, current, power factor, frequency, and meter clock synchronization',
+                'Edge Telemetry Verification: Live protocol parser that inspects checksum integrity, extracts engineering units, and validates exception/error status flags in real-time'
+            ],
+            'tech': ['DL/T 645-2007', 'MQTT', 'RS485', 'JavaScript', 'Hex/BCD Encoding', 'Smart Metering', 'IoT Telemetry'],
+            'images': ['dlt_workbench_1.png'],
+            'icon': 'fa-solid fa-bolt-lightning'
+        },
+        {
             'id': 'jt-erp',
             'title': 'JT ERP — Enterprise Resource Planning Suite',
             'category': 'Enterprise Operations & Finance ERP',
@@ -665,6 +686,11 @@ def resume_view(request):
     return render(request, "resume.html")
 
 
+def dlt_workbench_view(request):
+    """Interactive DL/T 645-2007 MQTT Meter Payload Workbench."""
+    return render(request, "tools/dlt_workbench.html")
+
+
 @require_POST
 @csrf_exempt
 def contact_submit(request):
@@ -704,6 +730,12 @@ def sitemap_xml(request):
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://jefftarimo.co.ke/tools/dlt-encoder-decoder/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jefftarimo.co.ke/education/</loc>
