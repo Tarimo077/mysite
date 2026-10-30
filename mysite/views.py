@@ -444,69 +444,72 @@ def home(request):
 
     experience = [
         {
-            'role': 'Head of Technology',
+            'title': 'Head of Technology',
             'company': 'Powerpay Africa Limited',
             'location': 'Nairobi, Kenya',
-            'period': 'Nov 2024 – Present',
-            'type': 'Full-Time Leadership',
-            'summary': (
-                'Leading the technology strategy, engineering direction, edge-to-cloud architecture, '
-                'and technical roadmap for an industrial IoT smart metering company operating across East Africa.'
-            ),
+            'period': 'Feb 2025 – Present',
+            'current': True,
+            'description': 'Directing overall technology vision, infrastructure scaling, strategic IT planning, and architectural roadmaps across hardware & software.',
             'highlights': [
-                'Directing end-to-end design and roll-out of smart prepayment and post-payment energy metering devices utilizing STM32 microcontrollers, MODBUS communication, and wireless telemetry.',
-                'Architected high-throughput ingestion backends on Django, Node.js, and ClickHouse time-series data storage, processing thousands of telemetry messages per hour with 99.9% uptime.',
-                'Leading hardware QA, firmware validation, and bench testing to guarantee fail-safe over-the-air performance across remote industrial sites.',
-                'Supervising multidisciplinary engineering teams covering embedded firmware, hardware circuit design, cloud APIs, and field operations.'
+                'Direct overall technology vision, infrastructure scaling, strategic IT planning, and architectural roadmaps across hardware & software.',
+                'Lead engineering teams across firmware, cloud backend, and mobile apps to deliver smart energy metering and financing systems.',
+                'Orchestrate tech stack decisions, cloud operations (AWS/Azure/Ubuntu), and technical delivery to align with company growth goals.'
             ],
-            'stack': ['Technical Leadership', 'STM32', 'LoRaWAN', 'MODBUS', 'ClickHouse', 'Django', 'Node.js', 'System Architecture']
+            'stack': ['Technical Leadership', 'System Architecture', 'AWS/Azure', 'Ubuntu Linux', 'Django', 'IoT Infrastructure']
         },
         {
-            'role': 'IoT Systems Engineer',
+            'title': 'Head of IoT',
             'company': 'Powerpay Africa Limited',
             'location': 'Nairobi, Kenya',
-            'period': 'Mar 2024 – Nov 2024',
-            'type': 'Full-Time Engineering',
-            'summary': (
-                'Engineered core firmware and communication stacks for smart electricity metering nodes deployed in commercial and residential properties.'
-            ),
+            'period': 'Feb 2023 – Jan 2025',
+            'current': False,
+            'description': 'Spearheaded firmware engineering, multi-protocol telemetry, and backend cloud architecture for smart energy meters.',
             'highlights': [
-                'Wrote production-grade MicroPython and C firmware for ESP32 and STM32 chips interfacing with digital energy meters via MODBUS RS485.',
-                'Designed cellular GPRS and LoRaWAN fallback pipelines ensuring zero data loss during network dropouts through localized SQLite buffer queues.',
-                'Integrated Node-RED automation workflows with InfluxDB and Grafana for real-time electrical load visualization and automated overload trip detection.',
-                'Conducted extensive field trials, RF path-loss measurements, and hardware reliability assessments in demanding electrical environments.'
+                'Spearheaded firmware engineering using C++ and MicroPython for smart energy meters and edge telemetry controllers.',
+                'Deployed multi-protocol communication pipelines (MODBUS RS485, GPRS, Wi-Fi, BLE) for continuous remote asset monitoring.',
+                'Architected scalable backend services and REST APIs with Node.js, Django, ClickHouse, and PostgreSQL on Ubuntu cloud servers.',
+                'Automated data normalization and exception alerts via custom Node-RED workflows, eliminating manual intervention.'
             ],
-            'stack': ['MicroPython', 'ESP32', 'MODBUS RS485', 'LoRaWAN', 'Cellular GPRS', 'InfluxDB', 'Node-RED', 'Grafana']
+            'stack': ['C++', 'MicroPython', 'MODBUS RS485', 'LoRaWAN', 'Cellular GPRS', 'Django', 'ClickHouse', 'PostgreSQL', 'Node-RED', 'Flutter']
         },
         {
-            'role': 'IoT Engineer',
-            'company': 'Silvanus Telematics',
+            'title': 'Head of IoT',
+            'company': 'Upande Limited',
             'location': 'Nairobi, Kenya',
-            'period': 'Jan 2022 – Aug 2023',
-            'type': 'Full-Time Engineering',
-            'summary': (
-                'Designed, bench-tested, and deployed remote telematics and GPS fleet tracking hardware integrated with onboard vehicle CAN bus diagnostics.'
-            ),
+            'period': 'Sep 2022 – Jan 2023',
+            'current': False,
+            'description': 'Managed product strategy and hardware delivery roadmaps as Product Owner across municipal and agricultural remote sensing initiatives.',
             'highlights': [
-                'Engineered asset tracking devices using cellular SIMCom modules, GPS receivers, and low-power microcontrollers.',
-                'Created Python backend services to decode proprietary binary telematics protocols and stream coordinates to real-time maps via WebSockets.',
-                'Developed driver behavior scoring algorithms monitoring harsh braking, speeding, and excessive idling.',
-                'Optimized device battery consumption with sleep-state power management routines, extending field battery endurance by 40%.'
+                'Directed product strategy and hardware delivery roadmaps as Product Owner across municipal and agricultural remote sensing initiatives.',
+                'Streamlined device testing and dispatch pipelines using Node-RED, reducing commissioning time across field deployments.',
+                'Liaised with external enterprise stakeholders to translate complex monitoring requirements into scalable IoT architectures.'
             ],
-            'stack': ['Embedded C', 'Python', 'SIMCom Modules', 'GPS / Telematics', 'CAN Bus', 'WebSockets', 'Power Optimization']
+            'stack': ['Product Ownership', 'Node-RED', 'LoRaWAN', 'Agricultural IoT', 'Stakeholder Management', 'System Design']
         },
         {
-            'role': 'Graduate Engineering Intern',
-            'company': 'New Kenya Planters Cooperative Union (New KPCU)',
-            'location': 'Dandora, Nairobi, Kenya',
-            'period': 'May 2021 – Sep 2021',
-            'type': 'Engineering Internship',
-            'summary': (
-                'Assisted in industrial electrical engineering maintenance, power distribution, and motor control panels in heavy manufacturing plants.'
-            ),
+            'title': 'IoT Engineer',
+            'company': 'Upande Limited',
+            'location': 'Nairobi, Kenya',
+            'period': 'Apr 2021 – Aug 2022',
+            'current': False,
+            'description': 'Assembled, calibrated, and maintained industrial sensor node fleets and time-series telemetry pipelines.',
             'highlights': [
-                'Carried out scheduled electrical preventive maintenance across industrial processing plants, reducing machine downtime.',
-                'Assisted senior engineers in troubleshooting motor control panels, relay boards, and industrial automation equipment.',
+                'Assembled, calibrated, and deployed industrial sensor nodes (water level, ultrasonic, flow, weather) using LoRaWAN and GSM.',
+                'Proactively maintained field device fleets, diagnosing power faults and issuing remote firmware updates to maximize uptime.',
+                'Configured InfluxDB time-series instances for sensor data ingestion, enabling real-time analytics and client dashboard visualizations.'
+            ],
+            'stack': ['LoRaWAN', 'GSM/Cellular', 'InfluxDB', 'Ultrasonic Sensors', 'Firmware Flashing', 'Hardware Diagnostics']
+        },
+        {
+            'title': 'Electrical Engineering Intern',
+            'company': 'New Kenya Co-operative Creameries',
+            'location': 'Nyeri, Kenya',
+            'period': 'Mar 2016 – Aug 2016',
+            'current': False,
+            'description': 'Industrial plant electrical preventive maintenance, motor control circuits, and automation troubleshooting.',
+            'highlights': [
+                'Carried out scheduled electrical preventive maintenance across industrial dairy processing plants, reducing machine downtime.',
+                'Assisted senior engineers in troubleshooting motor control panels, relay boards, and industrial automation equipment.'
             ],
             'stack': ['Industrial Automation', 'Motor Control Panels', 'Relay Logic', 'Preventive Maintenance']
         },
